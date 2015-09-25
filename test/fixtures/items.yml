@@ -7,7 +7,7 @@
 #  price          :float
 #  subcategory_id :integer
 #  user_id        :integer
-#  active         :boolean
+#  active         :boolean          default(TRUE)
 #  created_at     :datetime
 #  updated_at     :datetime
 #

@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if @current_user.present? %>
+<a href="<%= user_path(@current_user) %>"><%= @current_user.name %>
+</a>
+<%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %>
+<% end %>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,6 +79,15 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 1bcccb574abf45af4a4e7ab9090e1c8ba0f8eca8
+
+
+>>>>>>> d0510c33da3762b0b866a0d83c6f77b5434b3fca
 <%= yield %>
 
 </body>

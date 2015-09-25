@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20150925021628) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150925021628) do
     t.float    "price"
     t.integer  "subcategory_id"
     t.integer  "user_id"
-    t.boolean  "active"
+    t.boolean  "active",         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,8 +60,11 @@ ActiveRecord::Schema.define(version: 20150925021628) do
   create_table "wishes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "subcategory_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "name"
+    t.integer  "item_id"
+    t.boolean  "present",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end
