@@ -12,5 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/app.js
+//= require_tree ./backbone/models
+//= require_tree ./backbone/collections
+//= require_tree ./backbone/views
+//= require_tree ./backbone/routers
+//= require bootstrap
 //= require bootstrap-sprockets
+//= require_self
 //= require_tree .
