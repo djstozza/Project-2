@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :subcategories
+  resources :categories
   root :to => 'session#new'
 
   get '/login' => 'session#new'
