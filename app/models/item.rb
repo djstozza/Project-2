@@ -15,4 +15,5 @@
 class Item < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :subcategory
+	has_one :bookmark
 end
