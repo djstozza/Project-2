@@ -1,1 +1,5 @@
-var app = app || {};
+// var app = app || {};
+
+// app.search = Backbone.Model.extend({
+// 	urlRoot: ''
+// })
