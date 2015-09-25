@@ -1,0 +1,58 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4">
+      <%= f.label :email, :class => 'sr-only', :for => 'exampleInputEmail3' %>
+      <%= f.email_field :email, :class => 'form-control', :id => 'exampleInputEmail3', :placeholder => 'Email' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4">
+      <%= f.label :name, :class => 'sr-only', :for => 'exampleInputName3' %>
+      <%= f.text_field :name, :class => 'form-control', :id => 'exampleInputName3', :placeholder => 'Name' %>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4">
+      <%= f.label :surname, :class => 'sr-only', :for => 'exampleInputSurname3' %>
+      <%= f.text_field :surname, :class => 'form-control', :id => 'exampleInputSurname3', :placeholder => 'Surname' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4">
+      <%= f.label :password, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+      <%= f.password_field :password, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Password' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4">
+      <%= f.label :password_confirmation, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+      <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Confrim Password' %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <%= submit_tag "Submit", :class => 'btn btn-default submit' %>
+  </div>
+  
+<% end %>
+
+<p>Already have an account? Go back to the <%= link_to 'Login', login_path%> Page</p>
