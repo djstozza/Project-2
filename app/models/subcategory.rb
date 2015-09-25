@@ -14,3 +14,5 @@ class Subcategory < ActiveRecord::Base
 	has_many :items
 	has_many :wishes
 end
+
+#balls
