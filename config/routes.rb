@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   resources :subcategories
   resources :categories
   root :to => 'session#new'
