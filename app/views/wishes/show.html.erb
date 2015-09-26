@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @wish.user_id %>
+  <strong>Wish:</strong>
+  <%= @wish.name %>
 </p>
 
 <p>
-  <strong>Subcategory:</strong>
-  <%= @wish.subcategory_id %>
+  <strong>Category:</strong>
+  <%= @wish.subcategory.category.name %>
 </p>
+
+
+<p>
+  <strong>Subcategory:</strong>
+  <%= @wish.subcategory.name %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
 <%= link_to 'Back', wishes_path %>

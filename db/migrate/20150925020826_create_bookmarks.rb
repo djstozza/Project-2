@@ -5,7 +5,7 @@ class CreateBookmarks < ActiveRecord::Migration
       t.integer :item_id
       t.boolean :active, :default => true
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end

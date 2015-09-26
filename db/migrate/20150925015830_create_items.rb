@@ -5,7 +5,9 @@ class CreateItems < ActiveRecord::Migration
       t.float :price
       t.integer :subcategory_id
       t.integer :user_id
-      t.boolean :active, :default => true
+      t.integer :category_id
+      t.string :image
+      t.string :description
 
       t.timestamps
     end

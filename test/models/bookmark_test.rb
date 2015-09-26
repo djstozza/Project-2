@@ -6,8 +6,8 @@
 #  user_id    :integer
 #  item_id    :integer
 #  active     :boolean          default(TRUE)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'test_helper'
