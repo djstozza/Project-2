@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<% @items.each do |item| %>
+  <h2><%= @item.user.name %>'s Items</h2>
 
 <table>
   <thead>

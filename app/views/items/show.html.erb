@@ -42,7 +42,10 @@
   <%= @item.user.name %>
 </p>
 
-<p>Posted: <%= @item.created_at.strftime "%e %B, %Y" %></p>
+<p>
+  <strong>Posted:</strong>
+  <%= @item.created_at.strftime "%e %B, %Y" %>
+</p>
 
 
 
