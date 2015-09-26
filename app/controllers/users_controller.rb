@@ -70,6 +70,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def wish
+    @wish = @current_user.wish
+  end
+
+  def bookmark
+  end
+
+  def item
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     # def set_user

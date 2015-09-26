@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<% @wishes.each do |wish| %>
-  <h2><%= wish.user.name %>'s Wishes</h2>
-<% end %>
+
+  <h2><%= @current_user.name %>'s Wishes</h2>
+
 
 
 <% @wishes.each do |wish| %>
