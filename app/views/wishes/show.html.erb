@@ -1,23 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Wish:</strong>
-  <%= @wish.name %>
+	<strong>Wish:</strong>
+  	<%= @wish.name %>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @wish.subcategory.category.name %>
+  	<strong>Category:</strong>
+  	<%= @wish.subcategory.category.name %>
 </p>
 
 
 <p>
-  <strong>Subcategory:</strong>
-  <%= @wish.subcategory.name %>
+  	<strong>Subcategory:</strong>
+  	<%= @wish.subcategory.name %>
 </p>
 
+
+<p>
+	<strong>Created:</strong>
+	<%= @wish.created_at.strftime "%e %B, %Y" %>
+</p>
 
 
 
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
-<%= link_to 'Back', wishes_path %>
+<%= link_to 'My Wishes', wishes_path %> |
+<%= link_to 'Crush', @wish, :method => 'delete', :data => {:confirm => "Are you sure you want to turn your wish into dust? That's very existential..."} %>
