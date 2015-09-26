@@ -18,4 +18,15 @@ $(document).ready(function () {
 			$('#exampleInputPrice3').show();
 		}
 	});
+
+
+
+	$(".paypalbtn").click(function(event){
+		 
+	 	var destination = $(this).closest('.paypalbtnparent').find('.paid a').attr('href');
+	 
+	 	window.location = destination;
+		  
+	});
+
 });

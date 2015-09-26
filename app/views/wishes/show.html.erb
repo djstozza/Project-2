@@ -22,8 +22,17 @@
 	<%= @wish.created_at.strftime "%e %B, %Y" %>
 </p>
 
+<ul class = "wishparent">
+	<li class="bookmarkpost"> 
+	<%= button_to 'post bookmark', {:controller => "bookmark", :action => "create", :user_id => @wish.user_id, :item_id=> @wish.item_id} , :method=>:post  %>
 
+	</li>
+
+	<li class="wishdelete"> <%= link_to 'Crush', @wish, :method => 'delete', :data => {:confirm => "Are you sure you want to turn your wish into dust? That's very existential..."} %> </li>
+</ul>
 
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
 <%= link_to 'My Wishes', wishes_path %> |
 <%= link_to 'Crush', @wish, :method => 'delete', :data => {:confirm => "Are you sure you want to turn your wish into dust? That's very existential..."} %>
+
+<%# link_to 'Create Bookmark', new_bookmark_path{:controller => "create", :method => 'post',@wish}%>
