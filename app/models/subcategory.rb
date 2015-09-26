@@ -10,6 +10,7 @@
 #
 
 class Subcategory < ActiveRecord::Base
+	searchkick
 	belongs_to :category
 	has_many :items
 	has_many :wishes

@@ -15,6 +15,7 @@
 #
 
 class Item < ActiveRecord::Base
+	searchkick
 	belongs_to :user
 	belongs_to :subcategory
 	has_one :bookmark

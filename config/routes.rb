@@ -3,11 +3,19 @@ Rails.application.routes.draw do
 
   resources :wishes
   resources :bookmarks
-  resources :items
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   resources :subcategories
   
   get '/categories/home' => 'categories#home'
-  resources :categories
+  resources :categories do 
+    collection do
+      get 'search'
+    end
+  end
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

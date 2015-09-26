@@ -2,6 +2,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   
 
+  def search 
+    if params[:search].present?
+      @items = Item.search(params[:search])
+    else 
+      @items = Item.all
+    end
+  end
+
   # GET /items
   # GET /items.json
   def index

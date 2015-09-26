@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "rails-backbone"
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'searchkick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
