@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  
+
 
   # GET /items
   # GET /items.json
@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
       
       
     end
+
+    
 
     @item = Item.create item_details
     

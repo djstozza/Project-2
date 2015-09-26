@@ -35,6 +35,8 @@ class BookmarksController < ApplicationController
         format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
     end
+
+    @current_user.bookmarks << @bookmark
   end
 
   # PATCH/PUT /bookmarks/1
