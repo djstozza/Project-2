@@ -31,6 +31,8 @@ gem "rails-backbone"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'pg_search', '~> 1.0.5'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
