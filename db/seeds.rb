@@ -8,9 +8,9 @@
 
 User.destroy_all
 
-u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcmam")
-u2 = User.create(email: "v@v.com", name: "v", surname: "smthing")
-u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch")
+u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcmam", password: "12345678")
+u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "12345678")
+u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678")
 
 Category.destroy_all
 

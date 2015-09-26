@@ -1,29 +1,51 @@
 <p id="notice"><%= notice %></p>
 
+<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' %>
+      
+    <% else %>
+      <p><%= number_to_currency(@item.price) %></p>
+    <% end %>
+
 <p>
-  <strong>Name:</strong>
+
+
+<strong>Name:</strong>
   <%= @item.name %>
+</p>
+
+<% if @item.image %>
+  <p><%= cl_image_tag(@item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance") %></p> 
+<% end %>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @item.price %>
+  <%= number_to_currency(@item.price) %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @item.subcategory.category.name %>
 </p>
 
 <p>
   <strong>Subcategory:</strong>
-  <%= @item.subcategory_id %>
+  <%= @item.subcategory.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @item.user_id %>
+  <%= @item.user.name %>
 </p>
 
-<p>
-  <strong>Active:</strong>
-  <%= @item.active %>
-</p>
+<p>Posted: <%= @item.created_at.strftime "%e %B, %Y" %></p>
+
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Back', items_path %> |
+<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this item?"} %>

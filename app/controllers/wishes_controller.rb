@@ -35,6 +35,8 @@ class WishesController < ApplicationController
         format.json { render json: @wish.errors, status: :unprocessable_entity }
       end
     end
+
+    @current_user.wishes << @wish
   end
 
   # PATCH/PUT /wishes/1
@@ -69,6 +71,6 @@ class WishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_params
-      params.require(:wish).permit(:user_id, :subcategory_id)
+      params.require(:wish).permit(:user_id, :subcategory_id, :category_id, :name)
     end
 end

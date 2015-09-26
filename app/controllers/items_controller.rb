@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    
     @items = Item.all
   end
 
@@ -24,17 +25,36 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+   
+    
+    if (params[:file] == nil)
+      item_details = item_params
+      item_details[:image] = 'http://fillmurray.com/200/200'
+      
 
+    else
+      response = Cloudinary::Uploader.upload params[:file]
+      item_details = item_params
+      item_details[:image] = response["url"]
+      
+      
+    end
+
+    @item = Item.create item_details
+    
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
+        
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
+    @current_user.items << @item
+
   end
 
   # PATCH/PUT /items/1
@@ -49,6 +69,8 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # DELETE /items/1
@@ -69,6 +91,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :active)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image)
     end
 end

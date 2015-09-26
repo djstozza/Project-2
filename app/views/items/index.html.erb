@@ -7,9 +7,11 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
+      <th>Category</th>
       <th>Subcategory</th>
+      <th>Image</th>
       <th>User</th>
-      <th>Active</th>
+      <th>Posted</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +20,14 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.subcategory_id %></td>
-        <td><%= item.user_id %></td>
-        <td><%= item.active %></td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.subcategory.category.name %></td>
+        <td><%= item.subcategory.name %></td>
+        <td><%= item.image %></td>
+        
+        <td><%= item.user.name %></td>
+        <td><%= item.created_at.strftime "%e %B, %Y" %></td>
+    
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

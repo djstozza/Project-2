@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dhivuot1n
+  api_key: '119141531584199'
+  api_secret: 5wquLxSa1EVUiJAjmkjh5SLLriU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dhivuot1n
+  api_key: '119141531584199'
+  api_secret: 5wquLxSa1EVUiJAjmkjh5SLLriU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dhivuot1n
+  api_key: '119141531584199'
+  api_secret: 5wquLxSa1EVUiJAjmkjh5SLLriU
+  enhance_image_tag: true
+  static_image_support: false
