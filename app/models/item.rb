@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
 	has_one :bookmark
 
 	validates :name, :presence => true
+	validates :price, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
 	validates :subcategory_id,  :presence => true

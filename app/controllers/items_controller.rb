@@ -25,9 +25,8 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-   
-    
-    if (params[:file] == nil)
+ 
+    if params[:file] == nil
       item_details = item_params
       item_details[:image] = 'http://fillmurray.com/200/200'
       
@@ -38,12 +37,22 @@ class ItemsController < ApplicationController
       item_details[:image] = response["url"]
       
       
-    end
-
-    
+    end   
 
     @item = Item.create item_details
     
+    if @item.category_id == 1
+      #if the category is community
+      @item.price = 0
+    
+    elsif @item.category_id == 4
+      #if the category is personals
+      @item.price = 0
+    
+    else
+      @item.price
+    end
+
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -54,6 +63,7 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
 
     @current_user.items << @item
 
