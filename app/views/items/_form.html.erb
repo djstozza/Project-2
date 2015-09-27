@@ -47,7 +47,10 @@
         <%= f.text_field :price, :class => 'form-control', :id => 'exampleInputPrice3', :placeholder => 'Price ($)' %>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div id="housing"><%= render 'housing' %></div>
+    </div>
     <div class="form-group">
       <div class="col-md-3"></div>
         <%= f.cl_image_upload :file %>
@@ -56,9 +59,9 @@
         <div class="col-md-3"></div>
         <p><%= submit_tag "Post", :class => 'btn btn-default' %></p>
     </div>
-  
 
   <% end %>
+  
 
 <% else %>
 

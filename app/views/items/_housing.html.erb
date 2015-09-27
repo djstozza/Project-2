@@ -1,0 +1,70 @@
+<%= form_for @item do |f| %>
+	
+	<div class="row">
+		<div class="form-group col-md-3">
+		<%= f.label :rent, :class => 'sr-only', :for => 'exampleInputRent3' %>
+		<%= f.text_field :rent, :class => 'form-control', :id => 'exampleInputRent3', :placeholder => 'Rent ($) per week' %>
+
+		</div>
+		<div class="form-group col-md-3">
+		<%= f.label :area, :class => 'sr-only', :for => 'exampleInputArea3' %>
+		<%= f.number_field :area, :class => 'form-control', :id => 'exampleInputArea3', :placeholder => 'Area (m2)' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-2">
+			<%= f.label :available, 'Available From' %>
+			<%= f.date_field :available, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<%= f.label :housing_type %>
+		<%= f.select :housing_type, options_for_select(['apartment', 'cottage', 'duplex', 'house', 'loft', 'townhouse', 'unit']), :include_blank => true %>
+		<%= f.label :private_room, 'Private Room' %>
+		<%= f.select :private_room, options_for_select(['private room', 'room not private']), :include_blank => true %>
+		<%= f.label :private_bathroom %>
+		<%= f.select :private_bathroom, options_for_select(['private bathroom', 'bathroom not private']), :include_blank => true %>
+		<%= f.label :laundry, 'Parking' %>
+		<%= f.select :laundry, options_for_select(['w/d in unit', 'laundry in building', 'laundry on site', 'w/d hookups', 'no laundry on site' ]), :include_blank => true %>
+		<%= f.label :parking, 'Parking' %>
+		<%= f.select :parking, options_for_select(['carport', 'attached garage', 'detached garage', 'off-street parking', 'street parking', 'valet parking', 'no parking']), :include_blank => true %>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<%= f.label :dogs, 'Dogs Allowed'%>
+		<%= f.check_box :dogs %>
+		<%= f.label :cats, 'Cats Allowed' %>
+		<%= f.check_box :cats %>
+		<%= f.label :furnished, 'Furnished' %>
+		<%= f.check_box :furnished %>
+		<%= f.label :no_smoking, 'No Smoking' %>
+		<%= f.check_box :no_smoking %>
+		<%= f.label :wheelchair, 'Wheelchair Accessible' %>
+		<%= f.check_box :wheelchair %>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-5">
+			<%= f.label :openhouse1, 'Open for inspection' %>
+			<%= f.datetime_select :openhouse1, :class => 'form-control', :include_blank => true %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-5">
+			<%= f.label :openhouse2, 'Open for inspection' %>
+			<%= f.datetime_select :openhouse2, :class => 'form-control', :include_blank => true %>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-5">
+			<%= f.label :openhouse3, 'Open for inspection' %>
+			<%= f.datetime_select :openhouse3, :class => 'form-control', :include_blank => true %>
+		</div>
+	</div>
+
+<% end %>

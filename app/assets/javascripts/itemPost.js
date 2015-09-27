@@ -12,10 +12,20 @@ $(document).ready(function () {
 				$this.hide();
 			}
 		});
-		if ( (category == 'community')|| (category == 'personals')){
+		if ( (category == 'community') || (category == 'personals') || (category == 'housing')){
 			$('#exampleInputPrice3').hide();
 		} else {
 			$('#exampleInputPrice3').show();
+		}
+	});
+
+	$('#housing').hide();
+	$('#item_category_id').on('change', function () {
+		var category = $(this).find(':selected').text();
+		if (category === 'housing') {
+			$('#housing').show();
+		} else {
+			$('#housing').hide();
 		}
 	});
 });
