@@ -1,14 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' %>
-      
-    <% else %>
-      <p><%= number_to_currency(@item.price) %></p>
-    <% end %>
+
 
 <p>
-
-
 <strong>Name:</strong>
   <%= @item.name %>
 </p>
@@ -22,10 +16,15 @@
   <%= @item.description %>
 </p>
 
+
+<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' %>
+      
+<% else %>
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@item.price) %>
 </p>
+<% end %>
 
 <p>
   <strong>Category:</strong>
@@ -34,7 +33,7 @@
 
 <p>
   <strong>Subcategory:</strong>
-  <%= @item.subcategory.name %>
+  <%= link_to @item.subcategory.name, subcategory_path(@item.subcategory) %>
 </p>
 
 <p>
@@ -47,8 +46,14 @@
   <%= @item.created_at.strftime "%e %B, %Y" %>
 </p>
 
+<% if (@current_user == @item.user) %>
+
+<%= link_to 'Edit', edit_item_path(@item) %>
+
+<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
+
+<% else %>
 
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %> |
-<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this item?"} %>
+
+<% end %>

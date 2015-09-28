@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925021628) do
+ActiveRecord::Schema.define(version: 20150927131830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 20150925021628) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "private_room"
+    t.string   "private_bathroom"
+    t.string   "parking"
+    t.string   "laundry"
+    t.integer  "rent"
+    t.string   "housing_type"
+    t.integer  "area"
+    t.date     "available"
+    t.datetime "openhouse1"
+    t.datetime "openhouse2"
+    t.datetime "openhouse3"
+    t.boolean  "cats"
+    t.boolean  "dogs"
+    t.boolean  "furnished"
+    t.boolean  "no_smoking"
+    t.boolean  "wheelchair"
   end
 
   create_table "subcategories", force: :cascade do |t|
