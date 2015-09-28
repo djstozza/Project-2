@@ -6,16 +6,18 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'search'
+      get :autocomplete
     end
   end
-  resources :subcategories
-  
-  get '/categories/home' => 'categories#home'
   resources :categories do 
     collection do
       get 'search'
     end
   end
+  resources :subcategories
+  
+  get '/categories/home' => 'categories#home'
+
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

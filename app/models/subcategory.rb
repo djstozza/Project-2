@@ -10,7 +10,7 @@
 #
 
 class Subcategory < ActiveRecord::Base
-	searchkick
+	searchkick suggest: ["name"]
 	belongs_to :category
 	has_many :items
 	has_many :wishes

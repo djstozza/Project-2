@@ -3,13 +3,15 @@ class ItemsController < ApplicationController
   
 
   def search 
-    if params[:search].present?
-      @items = Item.search(params[:search])
-    else 
-      @items = Item.all
-    end
+    query = params[:search].presence || "*" 
+    @sub_categories = Subcategory.search query, suggest: true
+    @items = Item.search query , suggest: true
+    binding.pry
   end
 
+  def autocomplete
+    render json: Item.search(params[:term], fields: [{name: :text_start, price: :text_start, description: :text_start}], limit: 10).map(&:name)
+  end
   # GET /items
   # GET /items.json
   def index
