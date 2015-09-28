@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
       #if the category is personals
       @item.price = 0
     
-    elsif @item.category_id ==6
+    elsif @item.category_id == 6
      #if the category is housing
      @item.price = 0 
 
@@ -108,6 +108,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :cats, :dogs, :furnished, :no_smoking, :wheelchair)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale)
     end
 end

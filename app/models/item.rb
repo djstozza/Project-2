@@ -14,19 +14,21 @@
 #  updated_at       :datetime
 #  private_room     :string
 #  private_bathroom :string
+#  rooms            :integer
+#  bathrooms        :integer
 #  parking          :string
 #  laundry          :string
 #  rent             :integer
+#  sale             :integer
 #  housing_type     :string
 #  area             :integer
 #  available        :date
 #  openhouse1       :datetime
 #  openhouse2       :datetime
 #  openhouse3       :datetime
-#  cats             :boolean
-#  dogs             :boolean
+#  pets             :boolean
 #  furnished        :boolean
-#  no_smoking       :boolean
+#  smoking          :boolean
 #  wheelchair       :boolean
 #
 

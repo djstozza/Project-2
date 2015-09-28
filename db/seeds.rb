@@ -54,7 +54,7 @@ end
 
 
 
-subcats5 = ["apts / housing", "housing swap", "housing wanted", "office / commercial", "parking / storage", "real estate for sale", "rooms / shared", "rooms wanted", "sublets / temporary", "vacation rentals"]
+subcats5 = ["apts / housing", "housing swap", "office / commercial", "parking / storage", "real estate for sale", "rooms / shared", "sublets / temporary", "vacation rentals"]
 
 subcats5.each do |subcat|
     c5.subcategories.create :name => subcat
