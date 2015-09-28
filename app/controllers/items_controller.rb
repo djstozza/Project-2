@@ -36,11 +36,21 @@ class ItemsController < ApplicationController
       item_details = item_params
       item_details[:image] = response["url"]
       
-      
     end
+
+
 
     @item = Item.create item_details
     
+    allWishes = Wish.all.each do |eachWish|
+      
+      if(eachWish.category_id == Item.last.category_id && eachWish.subcategory_id == Item.last.subcategory_id && eachWish.name == Item.last.name)
+        Wish.update eachWish.id, item_id: Item.last.id
+      end
+    end
+
+
+
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }

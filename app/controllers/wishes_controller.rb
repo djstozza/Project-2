@@ -10,6 +10,7 @@ class WishesController < ApplicationController
   # GET /wishes/1
   # GET /wishes/1.json
   def show
+    @bookmark=Bookmark.new
 
   end
 

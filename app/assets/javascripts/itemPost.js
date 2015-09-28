@@ -19,14 +19,19 @@ $(document).ready(function () {
 		}
 	});
 
+	$("#new_bookmark").submit(function(event){ 
+    $.ajax({
+        type: "DELETE",
+        url: "/wishes/" + $('#wishID').text().match(/\d/)[0] ,
+        dataType: "json",
+        data: {"_method":"delete"},
+        complete: function(){
+            
+            console.log("Deleted successfully");
+        }
+    });
+    });
 
-
-	$(".paypalbtn").click(function(event){
-		 
-	 	var destination = $(this).closest('.paypalbtnparent').find('.paid a').attr('href');
-	 
-	 	window.location = destination;
-		  
-	});
+	
 
 });

@@ -5,6 +5,11 @@
   	<%= @wish.name %>
 </p>
 
+<p id="wishID">
+	<strong>ID:</strong>
+	<%= @wish.id %>
+</p>
+
 <p>
   	<strong>Category:</strong>
   	<%= @wish.subcategory.category.name %>
@@ -24,15 +29,32 @@
 
 <ul class = "wishparent">
 	<li class="bookmarkpost"> 
-	<%= button_to 'post bookmark', {:controller => "bookmark", :action => "create", :user_id => @wish.user_id, :item_id=> @wish.item_id} , :method=>:post  %>
+
+		<%= form_for(@bookmark) do |f| %>
+			<div class="field">
+			   <br>
+			    <%= f.hidden_field :user_id, :value => @wish.user_id %>
+		 	</div>
+		    <div class="field">
+			    <br>
+			    <%= f.hidden_field :item_id, :value => @wish.item_id %>
+		  	</div>
+		  	<div class="bookawish">
+		    	<%= f.submit%>
+		 	</div>
+		<% end %>
 
 	</li>
 
-	<li class="wishdelete"> <%= link_to 'Crush', @wish, :method => 'delete', :data => {:confirm => "Are you sure you want to turn your wish into dust? That's very existential..."} %> </li>
+	<li class="wishdelete"> <%= link_to 'Crush', @wish, :method => 'delete', target: "_blank", id: "wishdelete" %> </li>
 </ul>
+
+
 
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
 <%= link_to 'My Wishes', wishes_path %> |
 <%= link_to 'Crush', @wish, :method => 'delete', :data => {:confirm => "Are you sure you want to turn your wish into dust? That's very existential..."} %>
 
 <%# link_to 'Create Bookmark', new_bookmark_path{:controller => "create", :method => 'post',@wish}%>
+
+<!-- 	<%= button_to 'post bookmark', {:controller => "bookmarks", :action => "create", :user_id => @wish.user_id, :item_id=> @wish.item_id} , :method=>:post , id: "bookawish" %> -->
