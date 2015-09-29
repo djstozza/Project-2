@@ -34,12 +34,12 @@
 
 class Item < ActiveRecord::Base
 	searchkick text_start: [:name, :description], suggest: ["name"]
-	def search_data 
-		{
-			name: name,
-			description: description
-		}
-	end	
+	# def search_data 
+	# 	{
+	# 		name: name,
+	# 		description: description
+	# 	}
+	# end	
 
 	belongs_to :user
 	belongs_to :subcategory

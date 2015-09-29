@@ -63,9 +63,27 @@ require 'open-uri'
 
 doc_act = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/act"))
 activities = doc_act.css(".row .txt .pl a").children	
+
 s1 = Subcategory.find_by(name: 'activities')
+
 activities.each do |activity|
 	s1.items.create :name => activity.text
 end
 
-binding.pry
+doc_m4m = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/m4m?"))
+m4m = doc_m4m.css(".row .txt .pl a").children
+
+s2 = Subcategory.find_by(name: 'rants and raves')
+
+m4m.each do |m4m|
+	s2.items.create :name => m4m.text 
+end
+
+doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
+apa = doc_apa.css(".row .txt .pl a").children
+
+s3 = Subcategory.find_by(name: 'apts / housing')
+
+apa.each do |apa|
+	s3.items.create :name => apa
+end

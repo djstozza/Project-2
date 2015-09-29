@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def autocomplete
-    render json: Item.search(params[:term], fields: [{name: :text_start, description: :text_start}], limit: 10).map(&:name)
+    render json: Item.search(params[:term], fields: [{name: :text_start, description: :text_start}], limit: 20).map(&:name)
   end
   # GET /items
   # GET /items.json
