@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root :to => 'session#new'
 
+  post '/buy/:id', to: 'transactions#create', as: :buy
+  get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
+
   resources :wishes
   resources :bookmarks
   resources :items
