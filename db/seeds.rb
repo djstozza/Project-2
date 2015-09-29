@@ -13,8 +13,6 @@ u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "123
 u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678")
 
 Category.destroy_all
-
-Category.destroy_all
 c0 = Category.create :name => 'community'
 c1 = Category.create :name => 'gigs'
 c2 = Category.create :name => 'jobs'

@@ -1,0 +1,24 @@
+<h2>Results</h2>
+<% if @items.suggestions[0] %>
+	<p>Did you mean <%=link_to @items.suggestions[0], request.original_url.gsub(params["search"], @items.suggestions[0])%> </p>
+<% end %>
+<% @sub_categories.each do |sub| %>
+	<ul>
+	    <li>
+	        <li><%= link_to sub.name, sub %></li>
+	    </li>
+ 	</ul>
+<% end %>
+
+<% @items.each do |item| %>
+  
+  <ul>
+    <li>
+      <ul>
+        <li><%= link_to item.name, item %></li>
+        <li><%= item.created_at.strftime "%e %B, %Y" %></li>
+      </ul>
+    </li>
+  </ul>
+
+ <% end %>
