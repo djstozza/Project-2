@@ -11,7 +11,7 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories/1
   # GET /subcategories/1.json
   def show
-  end
+  end 
 
   # GET /subcategories/new
   def new

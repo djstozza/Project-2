@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Bookmarks</h1>
@@ -11,18 +12,12 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.user_id %></td>
-        <td><%= bookmark.item_id %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="main">
+</div>
+
+<script id="appViewTemp" type="text/template">
+  <div></div> 
+</script>
 
 <br>
 

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150929040215) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150929040215) do
     t.boolean  "furnished"
     t.boolean  "smoking"
     t.boolean  "wheelchair"
+<<<<<<< HEAD
     t.integer  "sale_id"
   end
 
@@ -68,6 +71,44 @@ ActiveRecord::Schema.define(version: 20150929040215) do
     t.integer  "book_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+=======
+    t.string   "employment_type"
+    t.string   "salary"
+    t.boolean  "recruiter"
+    t.boolean  "internship"
+    t.boolean  "non_profit"
+    t.boolean  "telecommuting"
+    t.boolean  "disability"
+    t.string   "make"
+    t.string   "condition"
+    t.string   "model"
+    t.string   "dimensions"
+    t.string   "serial_number"
+    t.integer  "engine_hours"
+    t.integer  "length_overall"
+    t.string   "propulsion_type"
+    t.date     "model_year"
+    t.string   "vin"
+    t.string   "cylinders"
+    t.string   "drive"
+    t.string   "fuel"
+    t.string   "engine_displacement"
+    t.string   "paint_colour"
+    t.string   "size"
+    t.string   "title_status"
+    t.string   "transmission"
+    t.string   "car_type"
+    t.string   "media_type"
+    t.string   "mobile_os"
+    t.date     "garage_sale1"
+    t.date     "garage_sale2"
+    t.date     "garage_sale3"
+    t.time     "start_time"
+    t.integer  "odometer"
+    t.datetime "event"
+    t.integer  "tickets"
+    t.string   "venue"
+>>>>>>> dbb1df2f0cbf7b6fedd3614e292014c606871a3e
   end
 
   create_table "subcategories", force: :cascade do |t|

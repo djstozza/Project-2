@@ -49,15 +49,18 @@
           </ul>
         </li> -->
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+      <%= form_tag search_items_path, method: :get, class: "navbar-form navbar-left", role: "search" do %>
+        <div>
+          <%= text_field_tag :search, params[:search], class: "form-control" %>
+          <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
         </div>
+
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <form class="navbar-form navbar-left" role="search">
       	
       </form>
+
       <ul class="nav navbar-nav navbar-right">
         <% if @current_user.present? %>
         	<li class="active"><a href="<%= user_path(@current_user) %>"><%= @current_user.name %><span class="sr-only">(current)</span></a></li>

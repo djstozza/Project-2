@@ -13,8 +13,6 @@ u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "123
 u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678")
 
 Category.destroy_all
-
-Category.destroy_all
 c0 = Category.create :name => 'community'
 c1 = Category.create :name => 'gigs'
 c2 = Category.create :name => 'jobs'
@@ -23,6 +21,7 @@ c4 = Category.create :name => 'for sale'
 c5 = Category.create :name => 'housing'
 
 Subcategory.destroy_all
+
 subcats0 = ["activities", "artists", "childcare", "classes", "events", "general", "groups", "localnews", "lost+found", "musicians", "pets", "politics", "rideshare", "volunteers"] 
 
 subcats0.each do |subcat|
@@ -46,7 +45,7 @@ subcats3.each do |subcat|
     c3.subcategories.create :name => subcat
 end
 
-subcat4 = ["antiques", "appliances", "arts+crafts", "atv/utv/sno", "auto parts", "baby+kid", "barter", "beauty+hlth", "bikes", "boats", "books", "business", "cars+trucks", "cds/dvd/vhs", "cell phones", "clothes+acc", "collectibles", "computers", "electronics", "farm+garden", "furniture", "garage sale", "general", "heavy equip", "household", "jewelry", "materials", "motorcycles", "music instr", "photo+video", "rvs+camp", "sporting", "tickets", "tools", "toys+games", "video"]
+subcat4 = ["antiques", "appliances", "arts+crafts", "atv/utv/sno", "auto parts", "baby+kid", "barter", "beauty+hlth", "bikes", "boats", "books & magazines", "business", "cars+trucks", "cds/dvd/vhs", "clothes+acc", "collectibles", "computers", "electronics", "farm+garden", "furniture", "garage sale", "general", "heavy equip", "household", "jewelry", "materials", "mobile phones", "motorcycles", "music instr", "photo+video", "rvs+camp", "sporting", "tickets", "tools", "toys+games"]
 
 subcat4.each do |subcat|
     c4.subcategories.create :name => subcat
@@ -58,4 +57,33 @@ subcats5 = ["apts / housing", "housing swap", "office / commercial", "parking / 
 
 subcats5.each do |subcat|
     c5.subcategories.create :name => subcat
+end
+
+require 'open-uri'
+
+doc_act = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/act"))
+activities = doc_act.css(".row .txt .pl a").children	
+
+s1 = Subcategory.find_by(name: 'activities')
+
+activities.each do |activity|
+	s1.items.create :name => activity.text
+end
+
+doc_m4m = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/m4m?"))
+m4m = doc_m4m.css(".row .txt .pl a").children
+
+s2 = Subcategory.find_by(name: 'rants and raves')
+
+m4m.each do |m4m|
+	s2.items.create :name => m4m.text 
+end
+
+doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
+apa = doc_apa.css(".row .txt .pl a").children
+
+s3 = Subcategory.find_by(name: 'apts / housing')
+
+apa.each do |apa|
+	s3.items.create :name => apa
 end

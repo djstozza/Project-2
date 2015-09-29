@@ -33,11 +33,12 @@ gem "rails-backbone"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem 'pg_search', '~> 1.0.5'
+gem 'jquery-ui-rails'
+gem 'nokogiri'
+gem 'searchkick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
