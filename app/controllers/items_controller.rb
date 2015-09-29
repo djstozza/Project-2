@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
       response = Cloudinary::Uploader.upload params[:file]
       item_details = item_params
       item_details[:image] = response["url"]
-
+    end
 
     @item = Item.create item_details
     
