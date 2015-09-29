@@ -45,7 +45,7 @@ subcats3.each do |subcat|
     c3.subcategories.create :name => subcat
 end
 
-subcat4 = ["antiques", "appliances", "arts+crafts", "atv/utv/sno", "auto parts", "baby+kid", "barter", "beauty+hlth", "bikes", "boats", "books", "business", "cars+trucks", "cds/dvd/vhs", "cell phones", "clothes+acc", "collectibles", "computers", "electronics", "farm+garden", "furniture", "garage sale", "general", "heavy equip", "household", "jewelry", "materials", "motorcycles", "music instr", "photo+video", "rvs+camp", "sporting", "tickets", "tools", "toys+games", "video"]
+subcat4 = ["antiques", "appliances", "arts+crafts", "atv/utv/sno", "auto parts", "baby+kid", "barter", "beauty+hlth", "bikes", "boats", "books & magazines", "business", "cars+trucks", "cds/dvd/vhs", "clothes+acc", "collectibles", "computers", "electronics", "farm+garden", "furniture", "garage sale", "general", "heavy equip", "household", "jewelry", "materials", "mobile phones", "motorcycles", "music instr", "photo+video", "rvs+camp", "sporting", "tickets", "tools", "toys+games"]
 
 subcat4.each do |subcat|
     c4.subcategories.create :name => subcat

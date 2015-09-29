@@ -1,7 +1,31 @@
+var categoryAndSubcategorySwitch = function () {
+	$('#item_subcategory_id option').hide();
 
-
-
-
+	$('#item_category_id').on('change', function () {
+		//Only occurs when there is a change in the form i.e. when an option is clicked
+		// $('#item_subcategory_id option').housing_description();
+		var category = $(this).find(':selected').text();
+		$('#item_subcategory_id option').show();
+		$('#item_subcategory_id option').each(function () {
+			var $this = $(this);
+			if ($this.text().startsWith(category + ':')) {
+				$this.show();
+			} else {
+				$this.hide();
+			}
+			
+			if ( $this.text() === "" || $this.val() === "" ) {
+				$this.show();
+				$this.parent().val(0);
+				if ($this.parent().val(0)) {
+					$('#housing').hide();
+					$('#jobs').hide();
+					$('#for_sale').hide();
+				}
+			}
+		});
+	});
+};
 
 
 var getHousing = function () {
@@ -89,48 +113,189 @@ var getHousing = function () {
 	});
 };
 
-$(document).ready(function () {
+var getJobs = function () {
+	$('#jobs').hide();
+	$('#item_subcategory_id').on('change', function () {
+		var subcategory = $(this).find(':selected').text();
+		if (subcategory.startsWith('jobs:')) {
+			$('#jobs').show();
+		}
+	});
+	
+};
+
+var getForSale = function () {
+	$('#for_sale').hide();
+	$('#item_subcategory_id').on('change', function () {
+		var subcategory = $(this).find(':selected').text();
+		if (subcategory.startsWith('for sale:')) {
+			$('#for_sale').show();
+		}
+
+		if (subcategory !== 'for sale: barter' || subcategory !== 'for sale: bicycle' || subcategory !== 'for sale: boats' || subcategory !== 'for sale: books & magazines' || subcategory !== 'for sale: mobile phones' || subcategory !== 'for sale: garage sale' || subcategory !== 'for sale: cars+trucks' || subcategory !== 'for sale: tickets' || subcategory !== 'for sale: rvs+camp') {
+			$('#for_sale').show();
+			$('div.general').show();
+			$('div.normal').show();
+			$('div.dimensions').show();
+			$('div#general').show();
+			$('div#boat').hide();
+			$('div.car').hide();
+			$('div#car').hide()
+			$('div.carbike').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div#mobile').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+			$('div#motorbike').hide();
+
+		};
+
+		if (subcategory === 'for sale: cars+trucks' || subcategory === 'for sale: rvs+camp') {
+			$('#for_sale').show();
+			$('div.general').show();
+			$('div#general').show();
+			$('div.normal').show();
+			$('div.dimensions').hide();
+			$('div.car').show();
+			$('div.carbike').show();
+			$('div#car').show();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div#mobile').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+			$('div#motorbike').hide();
+		};
+
+		if (subcategory === 'for sale: motorcycles') {
+			$('#for_sale').show();
+			$('div.general').show();
+			$('div.normal').show();
+			$('div.dimensions').hide();
+			$('div#general').show();
+			$('div#motorbike').show();
+			$('div.carbike').show();
+			$('div.car').hide();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div#mobile').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+		};
+
+		if (subcategory === 'for sale: barter') {
+			$('#for_sale').hide();
+			$('div.normal').hide();
+			$('div.general').hide();
+			$('div#general').hide();
+			$('div#motorbike').hide();
+			$('div.dimensions').hide();
+			$('div.carbike').hide();
+			$('div.car').hide();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div#mobile').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+		};
+
+
+		if (subcategory === 'for sale: mobile phones') {
+			$('#for_sale').show();
+			$('div.normal').show();
+			$('div.general').show();
+			$('div#general').show();
+			$('div.dimensions').show();
+			$('div#mobile').show();
+			$('div#motorbike').hide();
+			$('div.carbike').hide();
+			$('div.car').hide();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+		};
+
+		if (subcategory === 'for sale: books & magazines') {
+			$('#for_sale').show();
+			$('div.normal').hide();
+			$('div.dimensions').show();
+			$('div.general').show();
+			$('div#general').show();
+			$('div#mobile').hide();
+			$('div#motorbike').hide();
+			$('div.carbike').hide();
+			$('div.car').hide();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+		};
+
+		if (subcategory === 'for sale: boats') {
+			$('#for_sale').show();
+			$('div.normal').show();
+			$('div.dimensions').hide();
+			$('div.general').show();
+			$('div#general').show();
+			$('div#mobile').hide();
+			$('div#motorbike').hide();
+			$('div.carbike').hide();
+			$('div.car').hide();
+			$('div#boat').show();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div.event').hide();
+			$('div.garage').hide();
+		}
+
+		if (subcategory === 'for sale: garage sale') {
+			$('#for_sale').hide();
+			$('div.normal').hide();
+			$('div.dimensions').hide();
+			$('div.general').hide();
+			$('div#general').hide();
+			$('div#mobile').hide();
+			$('div#motorbike').hide();
+			$('div.carbike').hide();
+			$('div.car').hide();
+			$('div#boat').hide();
+			$('div#bike').hide();
+			$('div#media').hide();
+			$('div.event').hide();
+			$('div.garage').show();
+		}
+
+
+	});
+};
+
+
+
+var customiseItemShowPage = function () {
+	//goes through each span with the id of show in item/show and hides the ones that have no value i.e. end in " ". This customises the information that is shown
 	_.each($('span#show'), function(params) {
 		if($(params).text().endsWith(" ")) {
 	  		$(params).hide();
 	  	}
 	});
-
-	
-
-	$('#item_subcategory_id option').hide();
-
-	$('#item_category_id').on('change', function () {
+};
 
 
 
-		//Only occurs when there is a change in the form i.e. when an option is clicked
-		// $('#item_subcategory_id option').housing_description();
-		var category = $(this).find(':selected').text();
-		$('#item_subcategory_id option').show();
-		$('#item_subcategory_id option').each(function () {
-			var $this = $(this);
-			if ($this.text().startsWith(category + ':')) {
-				$this.show();
-			} else {
-				$this.hide();
-			}
-			
-			if ( $this.text() === "" || $this.val() === "" ) {
-				$this.show();
-				$this.parent().val(0);
-				if ($this.parent().val(0)) {
-					$('#housing').hide();
-				}
-			}
-		});
-		if ( (category == 'community') || (category == 'personals') || (category == 'housing')){
-			$('#price').hide();
-		} else {
-			$('#price').show();
-		}
-	});
+$(document).ready(function () {
+	categoryAndSubcategorySwitch();
 	getHousing();
+	getJobs();
+	getForSale();
+	customiseItemShowPage();
+	
 
 	
 });
