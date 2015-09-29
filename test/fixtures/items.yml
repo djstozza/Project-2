@@ -4,7 +4,7 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string
-#  price            :float
+#  price            :integer
 #  subcategory_id   :integer
 #  user_id          :integer
 #  category_id      :integer
@@ -19,7 +19,7 @@
 #  parking          :string
 #  laundry          :string
 #  rent             :integer
-#  sale             :integer
+#  sale_price       :integer
 #  housing_type     :string
 #  area             :integer
 #  available        :date

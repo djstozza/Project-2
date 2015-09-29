@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929013927) do
+ActiveRecord::Schema.define(version: 20150929040215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150929013927) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.float    "price"
+    t.integer  "price"
     t.integer  "subcategory_id"
     t.integer  "user_id"
     t.integer  "category_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150929013927) do
     t.string   "parking"
     t.string   "laundry"
     t.integer  "rent"
-    t.integer  "sale"
+    t.integer  "sale_price"
     t.string   "housing_type"
     t.integer  "area"
     t.date     "available"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150929013927) do
     t.boolean  "furnished"
     t.boolean  "smoking"
     t.boolean  "wheelchair"
+    t.integer  "sale_id"
   end
 
   create_table "sales", force: :cascade do |t|

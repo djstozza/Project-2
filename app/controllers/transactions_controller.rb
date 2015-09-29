@@ -3,18 +3,19 @@ class TransactionsController < ApplicationController
   def create
     # Amount in cents
    
-    item = Item.find(params[:id])
+    @@item = Item.find(params[:id])
     token = params[:stripeToken]
 
       begin
         charge = Stripe::Charge.create(
-        :amount      => item.price,
+        :amount      => @@item.price*100,
         :currency    => 'aud',
         :card        => token,
         :description => @current_user.name
         )
-        @sale = item.sale.create!(
-          buyer_email: @current_user.email)
+
+        @sale = Sale.create(buyer_email: @current_user.email)
+        @@item.sale = @sale
         redirect_to pickup_url(guid: @sale.guid)
       
 
@@ -25,13 +26,13 @@ class TransactionsController < ApplicationController
   end
 
 
-
   def pickup
+
     @sale = Sale.find_by!(guid: params[:guid])
-    @item = @sale.item
+ 	@sale.items << @@item
+
+ 	@@item.destroy
   end
-
-
 
 
 end

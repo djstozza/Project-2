@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
     if params[:file] == nil
       item_details = item_params
       item_details[:image] = 'http://fillmurray.com/200/200'
-      
 
     else
       response = Cloudinary::Uploader.upload params[:file]
@@ -114,6 +113,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale_price)
     end
 end
