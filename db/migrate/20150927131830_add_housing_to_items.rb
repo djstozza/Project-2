@@ -7,7 +7,7 @@ class AddHousingToItems < ActiveRecord::Migration
     add_column :items, :parking, :string
     add_column :items, :laundry, :string
     add_column :items, :rent, :integer
-    add_column :items, :sale, :integer
+    add_column :items, :sale_price, :integer
     add_column :items, :housing_type, :string
     add_column :items, :area, :integer
     add_column :items, :available, :date

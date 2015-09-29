@@ -19,7 +19,7 @@
 #  parking             :string
 #  laundry             :string
 #  rent                :integer
-#  sale                :integer
+#  sale_price          :integer
 #  housing_type        :string
 #  area                :integer
 #  available           :date

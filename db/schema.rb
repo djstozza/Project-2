@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150928153639) do
     t.string   "parking"
     t.string   "laundry"
     t.integer  "rent"
-    t.integer  "sale"
+    t.integer  "sale_price"
     t.string   "housing_type"
     t.integer  "area"
     t.date     "available"
