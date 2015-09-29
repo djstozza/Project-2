@@ -32,9 +32,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem "rails-backbone"
 # Use Unicorn as the app server
 # gem 'unicorn'
+
 gem 'jquery-ui-rails'
 gem 'nokogiri'
 gem 'searchkick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
@@ -51,3 +53,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'stripe'
+
+gem 'dotenv'

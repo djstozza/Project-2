@@ -1,6 +1,7 @@
 var categoryAndSubcategorySwitch = function () {
 	$('#item_subcategory_id option').hide();
 
+
 	$('#item_category_id').on('change', function () {
 		//Only occurs when there is a change in the form i.e. when an option is clicked
 		// $('#item_subcategory_id option').housing_description();
@@ -26,6 +27,7 @@ var categoryAndSubcategorySwitch = function () {
 		});
 	});
 };
+
 
 
 var getHousing = function () {
@@ -274,6 +276,8 @@ var getForSale = function () {
 
 
 	});
+
+
 };
 
 
@@ -291,11 +295,24 @@ var customiseItemShowPage = function () {
 
 $(document).ready(function () {
 	categoryAndSubcategorySwitch();
+
 	getHousing();
 	getJobs();
 	getForSale();
 	customiseItemShowPage();
+
+		$("#new_bookmark").submit(function(event){ 
+    $.ajax({
+        type: "DELETE",
+        url: "/wishes/" + $('#wishID').text().match(/\d/)[0] ,
+        dataType: "json",
+        data: {"_method":"delete"},
+        complete: function(){
+            
+            console.log("Deleted successfully");
+        }
+    });
+    });
 	
 
-	
 });
