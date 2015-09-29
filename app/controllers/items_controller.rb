@@ -22,6 +22,11 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def api 
+    @items = Item.all
+    render json: @items
+  end
+
   # POST /items
   # POST /items.json
   def create

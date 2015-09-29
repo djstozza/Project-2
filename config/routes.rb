@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root :to => 'session#new'
   get '/categories/api' => 'categories#api'
   get '/bookmarks/api' => 'bookmarks#api' 
+  get '/items/api' => 'items#api'
 
   resources :wishes
-  
+
   resources :bookmarks
 
   resources :items do

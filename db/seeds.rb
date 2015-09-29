@@ -23,6 +23,7 @@ c4 = Category.create :name => 'for sale'
 c5 = Category.create :name => 'housing'
 
 Subcategory.destroy_all
+
 subcats0 = ["activities", "artists", "childcare", "classes", "events", "general", "groups", "localnews", "lost+found", "musicians", "pets", "politics", "rideshare", "volunteers"] 
 
 subcats0.each do |subcat|
@@ -59,3 +60,14 @@ subcats5 = ["apts / housing", "housing swap", "office / commercial", "parking / 
 subcats5.each do |subcat|
     c5.subcategories.create :name => subcat
 end
+
+require 'open-uri'
+
+doc_act = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/act"))
+activities = doc_act.css(".row .txt .pl a").children	
+s1 = Subcategory.find_by(name: 'activities')
+activities.each do |activity|
+	s1.items.create :name => activity.text
+end
+
+binding.pry
