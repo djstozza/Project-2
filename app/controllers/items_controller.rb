@@ -6,11 +6,10 @@ class ItemsController < ApplicationController
     query = params[:search].presence || "*" 
     @sub_categories = Subcategory.search query, suggest: true
     @items = Item.search query , suggest: true
-    binding.pry
   end
 
   def autocomplete
-    render json: Item.search(params[:term], fields: [{name: :text_start, price: :text_start, description: :text_start}], limit: 10).map(&:name)
+    render json: Item.search(params[:term], fields: [{name: :text_start, description: :text_start}], limit: 20).map(&:name)
   end
   # GET /items
   # GET /items.json
@@ -30,6 +29,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+  end
+
+  def api 
+    @items = Item.all
+    render json: @items
   end
 
   # POST /items

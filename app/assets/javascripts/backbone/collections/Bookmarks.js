@@ -1,5 +1,7 @@
 var app = app || {};
 
-// app.Bookmarks = Backbone.Collections.extend({
-	
-// })
+app.Bookmarks = Backbone.Collection.extend({
+	url:'/bookmarks/api',
+	model: app.Bookmark	
+})
+

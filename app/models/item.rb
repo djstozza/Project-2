@@ -69,23 +69,30 @@
 #
 
 class Item < ActiveRecord::Base
-	searchkick text_start: [:name, :price, :description], suggest: ["name"]
-	def search_data 
-		{
-			name: name,
-			price: price,
-			description: description
-		}
-	end	
+	searchkick text_start: [:name, :description], suggest: ["name"]
+	# def search_data 
+	# 	{
+	# 		name: name,
+	# 		description: description
+	# 	}
+	# end	
 
 	belongs_to :user
 	belongs_to :subcategory
 	has_one :bookmark
 
+<<<<<<< HEAD
+	# validates :name, :presence => true
+	# validates :price, :presence => true
+	# validates :description, :presence => true
+	# validates :category_id, :presence => true
+	# validates :subcategory_id,  :presence => true
+=======
 	validates :name, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
 	validates :subcategory_id,  :presence => true
+>>>>>>> 8e3945758b80c4ee0a7416332db9c6086fb19701
 	
 	
 end

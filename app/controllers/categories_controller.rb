@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_admin, :except => [:show, :home]
+  before_action :check_if_admin, :except => [:show, :home, :api]
 
 
   # GET /categories
@@ -13,6 +13,11 @@ class CategoriesController < ApplicationController
   def home
     # for anyone
     @categories = Category.all
+  end
+
+  def api
+    @categories = Category.all
+    render json: @categories 
   end
 
   # GET /categories/1

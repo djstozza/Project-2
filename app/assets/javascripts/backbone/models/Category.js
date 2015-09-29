@@ -1,5 +1,5 @@
 var app = app || {};
 
-app.catergory = Backbone.Model.extend({
-	urlRoot: '/catergories'
+app.Category = Backbone.Model.extend({
+	urlRoot: '/categories/api'
 })
