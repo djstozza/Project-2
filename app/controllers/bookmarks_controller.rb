@@ -7,6 +7,11 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.all
   end
 
+  def api
+    @bookmarks = Bookmark.all
+    render json: @bookmarks 
+  end
+
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show

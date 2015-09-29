@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.bookmark = Backbone.Model.extend({
-	urlRoot: '/bookmarks'
+app.Bookmark = Backbone.Model.extend({
+	urlRoot: '/bookmarks/api'
 
 })

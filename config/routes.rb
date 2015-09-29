@@ -1,13 +1,28 @@
 Rails.application.routes.draw do
   root :to => 'session#new'
+  get '/categories/api' => 'categories#api'
+  get '/bookmarks/api' => 'bookmarks#api' 
 
   resources :wishes
-  resources :bookmarks
-  resources :items
-  resources :subcategories
   
+  resources :bookmarks
+
+  resources :items do
+    collection do
+      get 'search'
+      get :autocomplete
+    end
+  end
+
   get '/categories/home' => 'categories#home'
-  resources :categories
+  resources :categories do 
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :subcategories
+
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
