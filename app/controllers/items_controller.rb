@@ -2,6 +2,16 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
 
+  def search 
+    query = params[:search].presence || "*" 
+    @sub_categories = Subcategory.search query, suggest: true
+    @items = Item.search query , suggest: true
+    binding.pry
+  end
+
+  def autocomplete
+    render json: Item.search(params[:term], fields: [{name: :text_start, price: :text_start, description: :text_start}], limit: 10).map(&:name)
+  end
   # GET /items
   # GET /items.json
   def index
