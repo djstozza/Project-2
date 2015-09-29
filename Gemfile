@@ -52,3 +52,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'stripe'
+
+gem 'dotenv'
