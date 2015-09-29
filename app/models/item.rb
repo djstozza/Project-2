@@ -2,6 +2,7 @@
 #
 # Table name: items
 #
+
 #  id                  :integer          not null, primary key
 #  name                :string
 #  price               :float
@@ -66,6 +67,7 @@
 #  event               :datetime
 #  tickets             :integer
 #  venue               :string
+
 #
 
 class Item < ActiveRecord::Base
@@ -81,18 +83,15 @@ class Item < ActiveRecord::Base
 	belongs_to :subcategory
 	has_one :bookmark
 
-<<<<<<< HEAD
-	# validates :name, :presence => true
-	# validates :price, :presence => true
-	# validates :description, :presence => true
-	# validates :category_id, :presence => true
-	# validates :subcategory_id,  :presence => true
-=======
+	belongs_to :sale
+
+
 	validates :name, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
 	validates :subcategory_id,  :presence => true
->>>>>>> 8e3945758b80c4ee0a7416332db9c6086fb19701
+
 	
-	
+	validates_numericality_of :price,
+	greater_than: 49, message: "must be atleast 50 cents" 
 end

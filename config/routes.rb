@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/bookmarks/api' => 'bookmarks#api' 
   get '/items/api' => 'items#api'
 
+  post '/buy/:id', to: 'transactions#create', as: :buy
+  get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
+
   resources :wishes
 
   resources :bookmarks
