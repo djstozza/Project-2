@@ -13,4 +13,5 @@ class Category < ActiveRecord::Base
 	has_many :items, :through => :subcategories
 	has_many :wishes, :through => :subcategories
 
+	validates :name, :presence => true
 end

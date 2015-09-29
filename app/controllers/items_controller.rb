@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
   # GET /items
   # GET /items.json
   def index
@@ -24,9 +25,8 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-   
-    
-    if (params[:file] == nil)
+ 
+    if params[:file] == nil
       item_details = item_params
       item_details[:image] = 'http://fillmurray.com/200/200'
       
@@ -35,13 +35,11 @@ class ItemsController < ApplicationController
       response = Cloudinary::Uploader.upload params[:file]
       item_details = item_params
       item_details[:image] = response["url"]
-      
-    end
-
 
 
     @item = Item.create item_details
     
+
     allWishes = Wish.all.each do |eachWish|
       
       if(eachWish.category_id == Item.last.category_id && eachWish.subcategory_id == Item.last.subcategory_id && eachWish.name == Item.last.name)
@@ -49,7 +47,22 @@ class ItemsController < ApplicationController
       end
     end
 
+    if @item.category_id == 1
+      #if the category is community
+      @item.price = 0
+    
+    elsif @item.category_id == 4
+      #if the category is personals
+      @item.price = 0
+    
+    elsif @item.category_id == 6
+     #if the category is housing
+     @item.price = 0 
 
+    else
+      @item.price
+    
+    end
 
     respond_to do |format|
       if @item.save
@@ -61,6 +74,7 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
 
     @current_user.items << @item
 
@@ -100,6 +114,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale)
     end
 end

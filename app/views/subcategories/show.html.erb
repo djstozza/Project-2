@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subcategory.name %>
-</p>
+<h2><%= @subcategory.name %></h2>
 
-<p>
-  <strong>Category:</strong>
-  <%= @subcategory.category_id %>
-</p>
+<ul>
+	
+	<li>
+		<ul>
+			<% @subcategory.items.each do |item| %>
+			<div class="col-md-3">
+				<li>
+					<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
+				</li>
+				<li>
+					<%= item.name %>
+				</li>
+			</div>
+			<% end %>
+		</ul>	 
+	</li>
 
-<%= link_to 'Edit', edit_subcategory_path(@subcategory) %> |
-<%= link_to 'Back', subcategories_path %>
+</ul>

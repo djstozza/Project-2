@@ -1,6 +1,7 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_if_admin, :except => [:show]
+  
   # GET /subcategories
   # GET /subcategories.json
   def index
@@ -70,5 +71,9 @@ class SubcategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcategory_params
       params.require(:subcategory).permit(:name, :category_id)
+    end
+
+    def check_if_admin
+      redirect_to root_path unless @current_user.present? && @current_user.admin?
     end
 end

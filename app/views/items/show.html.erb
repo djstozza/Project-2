@@ -1,17 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' %>
-      
-    <% else %>
-      <p><%= number_to_currency(@item.price) %></p>
-    <% end %>
+
 
 <p>
-
-
 <strong>Name:</strong>
   <%= @item.name %>
 </p>
+
+
+
+
+<% if @item.subcategory.category.name == 'housing' %>
+  <p>
+    <span id="show"><strong>Type:</strong> <%= @item.housing_type %></span> <span id="show"><strong>Room(s):</strong> <%= @item.rooms %></span><span id="show"><strong>Bathroom(s):</strong> <%= @item.bathrooms %></span>
+  </p>
+<% else %>
+
+<% end %>
 
 <% if @item.image %>
   <p><%= cl_image_tag(@item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance") %></p> 
@@ -22,10 +27,60 @@
   <%= @item.description %>
 </p>
 
+<% if @item.subcategory.category.name == 'housing' %>
+  <p>
+    <span id="show"><strong>Rent (per week):</strong>  <%= number_to_currency(@item.rent) %></span> <span id="show"><strong>Area (m2):</strong> <%= @item.area %></span> <span id="show"><strong>Available from:</strong> <%= @item.available %></span>
+  </p>
+
+  <p>
+    <span id="show"><strong>Room:</strong> <%= @item.private_room %></span> <span id="show"><strong>Bathroom:</strong> <%= @item.private_bathroom %></span> <span id="show"><strong>Laundry:</strong> <%= @item.laundry %></span> <span id="show"><strong>Parking:</strong> <%= @item.parking %></span>
+  </p>
+
+
+  <p>
+    <% if @item.pets? %>
+      Pets: <i class="icon-dog"></i><i class="icon-cat"></i>
+    <% end %>
+    <% if @item.smoking? %>
+      Smoking: <i class="icon-cigarette"></i>
+    <% end %>
+    <% if @item.furnished %>
+      Furnished: <i class="icon-chair"></i>
+    <% end %>
+    <% if @item.wheelchair %>
+      Wheelchair Accessible: <i class="icon-wheelchair"></i>
+    <% end %>
+  </p>
+
+  <p>
+    <% if @item.openhouse1? %>
+      <ul>
+        <li><%= @item.openhouse1 %></li>
+        <li><%= @item.openhouse2 %></li>
+        <li><%= @item.openhouse3 %></li>
+      </ul>
+    <% end %>
+  </p>
+<% else %>
+
+<% end %>
+
+
+<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' || @item.subcategory.category.name == 'housing' %>
+      
+<% else %>
+
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@item.price) %>
 </p>
+<% end %>
+
+
+
+
+
+
 
 <p>
   <strong>Category:</strong>
@@ -34,7 +89,7 @@
 
 <p>
   <strong>Subcategory:</strong>
-  <%= @item.subcategory.name %>
+  <%= link_to @item.subcategory.name, subcategory_path(@item.subcategory) %>
 </p>
 
 <p>
@@ -47,8 +102,14 @@
   <%= @item.created_at.strftime "%e %B, %Y" %>
 </p>
 
+<% if (@current_user == @item.user) %>
+
+<%= link_to 'Edit', edit_item_path(@item) %>
+
+<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
+
+<% else %>
 
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %> |
-<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this item?"} %>
+
+<% end %>

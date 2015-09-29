@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root :to => 'session#new'
+
   resources :wishes
   resources :bookmarks
   resources :items
   resources :subcategories
+  
+  get '/categories/home' => 'categories#home'
   resources :categories
-  root :to => 'session#new'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
