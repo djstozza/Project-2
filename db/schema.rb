@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150929040215) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,18 +58,6 @@ ActiveRecord::Schema.define(version: 20150929040215) do
     t.boolean  "furnished"
     t.boolean  "smoking"
     t.boolean  "wheelchair"
-<<<<<<< HEAD
-    t.integer  "sale_id"
-  end
-
-  create_table "sales", force: :cascade do |t|
-    t.string   "buyer_email"
-    t.string   "seller_email"
-    t.string   "guid"
-    t.integer  "book_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-=======
     t.string   "employment_type"
     t.string   "salary"
     t.boolean  "recruiter"
@@ -108,7 +94,16 @@ ActiveRecord::Schema.define(version: 20150929040215) do
     t.datetime "event"
     t.integer  "tickets"
     t.string   "venue"
->>>>>>> dbb1df2f0cbf7b6fedd3614e292014c606871a3e
+    t.integer  "sale_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.string   "buyer_email"
+    t.string   "seller_email"
+    t.string   "guid"
+    t.integer  "book_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "subcategories", force: :cascade do |t|
