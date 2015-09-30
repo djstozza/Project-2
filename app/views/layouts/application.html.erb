@@ -27,7 +27,7 @@
         <li><a href="<%= categories_home_path %>">Categories</a></li>
         <li><a href="<%= new_item_path %>">Post</a></li>
         <li><a href="<%= new_wish_path %>">Make a Wish</a></li>
-
+        
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -53,6 +53,10 @@
       <ul class="nav navbar-nav navbar-right">
         <% if @current_user.present? %>
         	<li class="active"><a href="<%= user_path(@current_user) %>"><%= @current_user.name %><span class="sr-only">(current)</span></a></li>
+          <li><%= link_to mailbox_inbox_path do  %>
+              <span>Inbox</span> <span class="label label-danger"><%=unread_messages_count%></span>
+            <% end %>
+          </li> 
         <li class="dropdown">
           		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
           		<ul class="dropdown-menu">
