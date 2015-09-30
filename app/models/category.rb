@@ -9,7 +9,6 @@
 #
 
 class Category < ActiveRecord::Base
-	searchkick
 	has_many :subcategories
 	has_many :items, :through => :subcategories
 	has_many :wishes, :through => :subcategories
