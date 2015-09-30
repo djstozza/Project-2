@@ -11,8 +11,8 @@
         <%= f.text_field :make, :class => 'form-control', :id => 'exampleInputMake3', :placeholder => 'Make/Manufacturer' %>
      </div>
      <div class="form-group col-md-2 normal">
-        <%= f.label :model, :class => 'sr-only', :for => 'exampleInputModel3' %>
-        <%= f.text_field :model, :class => 'form-control', :id => 'exampleInputModel3', :placeholder => 'Model Name/Number' %>
+        <%= f.label :make_type, :class => 'sr-only', :for => 'exampleInputModel3' %>
+        <%= f.text_field :make_type, :class => 'form-control', :id => 'exampleInputModel3', :placeholder => 'Model Name/Number' %>
       </div>
       <div class="form-group col-md-2 dimensions">
         <%= f.label :dimensions, :class => 'sr-only', :for => 'exampleInputDimensions3' %>
@@ -66,8 +66,8 @@
 			<%= f.select :propulsion_type, options_for_select(["sail", "power", "human"]), :include_blank => true %>
 		</div>
 		<div class="col-md-3 car">
-			<%= f.label :model_year, 'Model Year' %>
-			<%= f.select :model_year, (Time.now.year - 100)..(Time.now.year), :include_blank => true %>
+			<%= f.label :make_year, 'Model Year' %>
+			<%= f.select :make_year, options_for_select((Time.now.year - 100)..(Time.now.year)), :include_blank => true %>
 		</div>
 		<div class="col-md-3 car">
 			<%= f.label :cylinders, 'Cylinders' %>
@@ -86,10 +86,6 @@
 			<%= f.select :paint_colour, options_for_select(["black", "blue", "green", "grey", "orange",  "pink", "silver", "white", "yellow", "custom"]), :include_blank => true %>
 		</div>
 
-		<div class="col-md-3 car">
-			<%= f.label :size, 'Size' %>
-			<%= f.select :size, options_for_select(["small family car", "full-size", "mid-size", "supermini"]), :include_blank => true %>
-		</div>
 		<div class="col-md-3 carbike">
 			<%= f.label :title_status, 'Title Status' %>
 			<%= f.select :title_status, options_for_select(["clean", "salvage", "rebuilt", "parts only", "lien",  "missing"]), :include_blank => true %>
