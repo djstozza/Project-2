@@ -30,7 +30,7 @@
 #  furnished           :boolean
 #  smoking             :boolean
 #  wheelchair          :boolean
-#  sale_id             :integer
+
 #  employment_type     :string
 #  salary              :string
 #  recruiter           :boolean
@@ -40,13 +40,13 @@
 #  disability          :boolean
 #  make                :string
 #  condition           :string
-#  model               :string
+#  make_type           :string
 #  dimensions          :string
 #  serial_number       :string
 #  engine_hours        :integer
 #  length_overall      :integer
 #  propulsion_type     :string
-#  model_year          :date
+#  make_year           :integer
 #  vin                 :string
 #  cylinders           :string
 #  drive               :string
@@ -67,9 +67,7 @@
 #  event               :datetime
 #  tickets             :integer
 #  venue               :string
-#  latitude            :float
-#  longitude           :float
-#  address             :string
+#  sale_id             :integer
 #
 
 
@@ -85,25 +83,20 @@ class Item < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :subcategory
 	has_one :bookmark
-
-
-
-	
-
 	belongs_to :sale
 
-
-
-	validates :name, :presence => true
-	validates :description, :presence => true
-	validates :category_id, :presence => true
-	validates :subcategory_id,  :presence => true
+	# validates :name, :presence => true
+	# validates :description, :presence => true
+	# validates :category_id, :presence => true
+	# validates :subcategory_id,  :presence => true
 
 
 	
+
 	validates_numericality_of :price,
 	greater_than: 49, message: "must be atleast 50 cents" 
 
 	geocoded_by :full_street_address   # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
+
 end

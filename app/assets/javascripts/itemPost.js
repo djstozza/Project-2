@@ -21,7 +21,7 @@ var categoryAndSubcategorySwitch = function () {
 				if ($this.parent().val(0)) {
 					$('#housing').hide();
 					$('#jobs').hide();
-					$('#for_sale').hide();
+					$('div#for_sale').hide();
 				}
 			}
 		});
@@ -36,6 +36,7 @@ var getHousing = function () {
 		var subcategory = $(this).find(':selected').text();
 		if (subcategory.startsWith('housing:')) {
 			$('#housing').show();
+			
 		};
 
 		if (subcategory === 'housing: rooms / shared') {
@@ -51,14 +52,14 @@ var getHousing = function () {
 		if (subcategory === 'housing: parking / storage' || subcategory === 'housing: office / commercial') {
 			$('div#housing_description.row').hide();
 			$('div#housing_checkboxes.row').hide();
-			$('div#housing_general.row').hide();
+			$('div#housing.row').hide();
 			$('div#openhouse.row').hide();
 			$('#rent').show();
 			$('#sale').hide();
 		};
 
 		if (subcategory === 'housing: real estate for sale') {
-			$('div#housing_general.row').show();
+			$('div#housing.row').show();
 			$('#rent').hide();
 			$('#sale').show();
 			$('div#housing_description.row').show();
@@ -70,7 +71,7 @@ var getHousing = function () {
 
 
 		if (subcategory === 'housing: apts / housing') {
-			$('div#housing_general.row').show();
+			$('div#housing.row').show();
 			$('#rent').show();
 			$('#sale').hide();
 			$('div#housing_description.row').show();
@@ -83,7 +84,7 @@ var getHousing = function () {
 		if (subcategory === 'housing: vacation rentals') {
 			$('#rent').show();
 			$('#sale').hide();
-			$('div#housing_general.row').show();
+			$('div#housing.row').show();
 			$('div#housing_description.row').show();
 			$('div#housing_type').show();
 			$('div#housing_checkboxes.row').show();
@@ -94,7 +95,7 @@ var getHousing = function () {
 		if (subcategory === 'housing: housing swap') {
 			$('div#housing_description.row').show();
 			$('div#housing_checkboxes.row').show();
-			$('div#housing_general.row').show();
+			$('div#housing.row').show();
 			$('div#shared').hide();
 			$('div#openhouse.row').hide();
 			$('div#housing_type').show();
@@ -121,7 +122,7 @@ var getJobs = function () {
 		var subcategory = $(this).find(':selected').text();
 		if (subcategory.startsWith('jobs:')) {
 			$('#jobs').show();
-		}
+		};
 	});
 	
 };
@@ -132,153 +133,180 @@ var getForSale = function () {
 		var subcategory = $(this).find(':selected').text();
 		if (subcategory.startsWith('for sale:')) {
 			$('#for_sale').show();
+		
+
+			if (subcategory !== 'for sale: barter' || subcategory !== 'for sale: bicycle' || subcategory !== 'for sale: boats' || subcategory !== 'for sale: books & magazines' || subcategory !== 'for sale: mobile phones' || subcategory !== 'for sale: garage sale' || subcategory !== 'for sale: cars+trucks' || subcategory !== 'for sale: tickets' || subcategory !== 'for sale: rvs+camp' || subcategory !== 'for sale: cds/dvd/vhs') {
+				$('div.general').show();
+				$('div.normal').show();
+				$('div.dimensions').show();
+				$('div#general').show();
+				$('div#boat').hide();
+				$('div.car').hide();
+				$('div#car').hide()
+				$('div.carbike').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div#mobile').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+				$('div#motorbike').hide();
+
+			};
+
+			if (subcategory === 'for sale: cars+trucks' || subcategory === 'for sale: rvs+camp') {
+				$('div.general').show();
+				$('div#general').show();
+				$('div.normal').show();
+				$('div.dimensions').hide();
+				$('div.car').show();
+				$('div.carbike').show();
+				$('div#car').show();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div#mobile').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+				$('div#motorbike').hide();
+			};
+
+			if (subcategory === 'for sale: motorcycles') {
+				$('div.general').show();
+				$('div.normal').show();
+				$('div.dimensions').hide();
+				$('div#general').show();
+				$('div#motorbike').show();
+				$('div.carbike').show();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div#mobile').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
+
+			if (subcategory === 'for sale: barter') {
+				$('#for_sale').hide();
+				$('div.normal').hide();
+				$('div.general').hide();
+				$('div#general').hide();
+				$('div#motorbike').hide();
+				$('div.dimensions').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div#mobile').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
+
+
+			if (subcategory === 'for sale: mobile phones') {
+				$('div.normal').show();
+				$('div.general').show();
+				$('div#general').show();
+				$('div.dimensions').show();
+				$('div#mobile').show();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
+
+			if (subcategory === 'for sale: books & magazines') {
+				$('div.normal').hide();
+				$('div.dimensions').show();
+				$('div.general').show();
+				$('div#general').show();
+				$('div#mobile').hide();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
+
+			if (subcategory === 'for sale: boats') {
+				$('div.normal').show();
+				$('div.dimensions').hide();
+				$('div.general').show();
+				$('div#general').show();
+				$('div#mobile').hide();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').show();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
+
+			if (subcategory === 'for sale: garage sale') {
+				$('#for_sale').hide();
+				$('div.normal').hide();
+				$('div.dimensions').hide();
+				$('div.general').hide();
+				$('div#general').hide();
+				$('div#mobile').hide();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div.event').hide();
+				$('div.garage').show();
+			};
+
+			if (subcategory === 'for sale: tickets') {
+				$('div.normal').hide();
+				$('div.dimensions').hide();
+				$('div.general').hide();
+				$('div#general').hide();
+				$('div#mobile').hide();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').hide();
+				$('div.event').show();
+				$('div.garage').hide();
+			};
+
+			if (subcategory === 'for sale: cds/dvd/vhs') {
+				$('div.normal').hide();
+				$('div.dimensions').hide();
+				$('div.general').show();
+				$('div#general').hide();
+				$('div#mobile').hide();
+				$('div#motorbike').hide();
+				$('div.carbike').hide();
+				$('div.car').hide();
+				$('div#boat').hide();
+				$('div#bike').hide();
+				$('div#media').show();
+				$('div.event').hide();
+				$('div.garage').hide();
+			};
 		}
-
-		if (subcategory !== 'for sale: barter' || subcategory !== 'for sale: bicycle' || subcategory !== 'for sale: boats' || subcategory !== 'for sale: books & magazines' || subcategory !== 'for sale: mobile phones' || subcategory !== 'for sale: garage sale' || subcategory !== 'for sale: cars+trucks' || subcategory !== 'for sale: tickets' || subcategory !== 'for sale: rvs+camp') {
-			$('#for_sale').show();
-			$('div.general').show();
-			$('div.normal').show();
-			$('div.dimensions').show();
-			$('div#general').show();
-			$('div#boat').hide();
-			$('div.car').hide();
-			$('div#car').hide()
-			$('div.carbike').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div#mobile').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-			$('div#motorbike').hide();
-
-		};
-
-		if (subcategory === 'for sale: cars+trucks' || subcategory === 'for sale: rvs+camp') {
-			$('#for_sale').show();
-			$('div.general').show();
-			$('div#general').show();
-			$('div.normal').show();
-			$('div.dimensions').hide();
-			$('div.car').show();
-			$('div.carbike').show();
-			$('div#car').show();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div#mobile').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-			$('div#motorbike').hide();
-		};
-
-		if (subcategory === 'for sale: motorcycles') {
-			$('#for_sale').show();
-			$('div.general').show();
-			$('div.normal').show();
-			$('div.dimensions').hide();
-			$('div#general').show();
-			$('div#motorbike').show();
-			$('div.carbike').show();
-			$('div.car').hide();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div#mobile').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-		};
-
-		if (subcategory === 'for sale: barter') {
-			$('#for_sale').hide();
-			$('div.normal').hide();
-			$('div.general').hide();
-			$('div#general').hide();
-			$('div#motorbike').hide();
-			$('div.dimensions').hide();
-			$('div.carbike').hide();
-			$('div.car').hide();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div#mobile').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-		};
-
-
-		if (subcategory === 'for sale: mobile phones') {
-			$('#for_sale').show();
-			$('div.normal').show();
-			$('div.general').show();
-			$('div#general').show();
-			$('div.dimensions').show();
-			$('div#mobile').show();
-			$('div#motorbike').hide();
-			$('div.carbike').hide();
-			$('div.car').hide();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-		};
-
-		if (subcategory === 'for sale: books & magazines') {
-			$('#for_sale').show();
-			$('div.normal').hide();
-			$('div.dimensions').show();
-			$('div.general').show();
-			$('div#general').show();
-			$('div#mobile').hide();
-			$('div#motorbike').hide();
-			$('div.carbike').hide();
-			$('div.car').hide();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-		};
-
-		if (subcategory === 'for sale: boats') {
-			$('#for_sale').show();
-			$('div.normal').show();
-			$('div.dimensions').hide();
-			$('div.general').show();
-			$('div#general').show();
-			$('div#mobile').hide();
-			$('div#motorbike').hide();
-			$('div.carbike').hide();
-			$('div.car').hide();
-			$('div#boat').show();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div.event').hide();
-			$('div.garage').hide();
-		}
-
-		if (subcategory === 'for sale: garage sale') {
-			$('#for_sale').hide();
-			$('div.normal').hide();
-			$('div.dimensions').hide();
-			$('div.general').hide();
-			$('div#general').hide();
-			$('div#mobile').hide();
-			$('div#motorbike').hide();
-			$('div.carbike').hide();
-			$('div.car').hide();
-			$('div#boat').hide();
-			$('div#bike').hide();
-			$('div#media').hide();
-			$('div.event').hide();
-			$('div.garage').show();
-		}
-
 
 	});
 
-
+	
 };
+
 
 
 
@@ -301,17 +329,17 @@ $(document).ready(function () {
 	getForSale();
 	customiseItemShowPage();
 
-		$("#new_bookmark").submit(function(event){ 
-    $.ajax({
-        type: "DELETE",
-        url: "/wishes/" + $('#wishID').text().match(/\d/)[0] ,
-        dataType: "json",
-        data: {"_method":"delete"},
-        complete: function(){
+	$("#new_bookmark").submit(function(event){ 
+    	$.ajax({
+	        type: "DELETE",
+	        url: "/wishes/" + $('#wishID').text().match(/\d/)[0] ,
+	        dataType: "json",
+	        data: {"_method":"delete"},
+	        complete: function() {
             
-            console.log("Deleted successfully");
-        }
-    });
+            	console.log("Deleted successfully");
+        	}
+    	});
     });
 	
 

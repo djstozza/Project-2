@@ -7,7 +7,7 @@ app.Router = Backbone.Router.extend({
 
 	index: function () {
 		var appView = new app.AppView({
-			collection: app.bookmarks
+			collection: app.items
 		})
 		appView.render()
 

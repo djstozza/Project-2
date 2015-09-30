@@ -2,20 +2,55 @@
 
 
 
-<p>
+<h3>
 <strong>Name:</strong>
   <%= @item.name %>
+</h3>
+
+<%# Will show if the category is For Sale %>
+<% if @item.subcategory.category.name == 'for sale' %>
+
+<%# Will show if the subcategory is for cars+trucks/motorcycles/rvs+camp %>
+<p>
+  <span id="show"><strong>Description:</strong> <%= @item.make %></span> <span id="show"><%= @item.make_type %></span> <span id="show"><strong>Year:</strong> <%= @item.make_year %></span>
+</p>
+  
+<p>
+  <span id="show"><strong>Transmission:</strong> <%= @item.transmission %></span>  <span id="show"><strong>Type:</strong> <%= @item.car_type %></span> <span id="show"><strong>Distance Travelled (km):</strong> <%= @item.odometer %></span>
+</p>
+<p>
+  <span id="show"><strong>Fuel:</strong> <%= @item.fuel %></span>
 </p>
 
+<%# will show if subcategory is motorcycles %>
+<p>
+  <span id="show"><strong>Engine Displacement (CC): </strong> <%= @item.engine_displacement %></span>
+</p>
 
+<%# will show if subcategory is boats %>
+<p>
+  <span id="show"><strong>Propulsion Type: </strong> <%= @item.propulsion_type %></span> <span id="show"><strong>Length Overall (LOA)</strong> <%= @item.length_overall %></span>
+</p>
 
+<%# will show if subcategory is mobile phones %>
+<p>
+  <span id="show"><strong>Operating System: </strong> <%= @item.mobile_os %></span>
+</p>
 
+<% end %>
+
+<%# Will show if the category is Housing %>
 <% if @item.subcategory.category.name == 'housing' %>
-  <p>
-    <span id="show"><strong>Type:</strong> <%= @item.housing_type %></span> <span id="show"><strong>Room(s):</strong> <%= @item.rooms %></span><span id="show"><strong>Bathroom(s):</strong> <%= @item.bathrooms %></span>
-  </p>
-<% else %>
+<p>
+  <span id="show"><strong>Type:</strong> <%= @item.housing_type %></span> <span id="show"><strong>Room(s):</strong> <%= @item.rooms %></span><span id="show"><strong>Bathroom(s):</strong> <%= @item.bathrooms %></span>
+</p>
+<% end %>
 
+<%# Will show if the category is Jobs %>
+<% if @item.subcategory.category.name == 'jobs' %>
+<p>
+  <span id="show"><strong>Employment Type: </strong><%= @item.employment_type %></span><span id="show"><strong>Salary: </strong><%= @item.salary %></span>
+</p>
 <% end %>
 
 <% if @item.image %>
@@ -39,16 +74,16 @@
 
   <p>
     <% if @item.pets? %>
-      Pets: <i class="icon-dog"></i><i class="icon-cat"></i>
+      <strong>Pets:</strong> <i class="icon-dog"></i><i class="icon-cat"></i>
     <% end %>
     <% if @item.smoking? %>
-      Smoking: <i class="icon-cigarette"></i>
+      <strong>Smoking:</strong> <i class="icon-cigarette"></i>
     <% end %>
     <% if @item.furnished %>
-      Furnished: <i class="icon-chair"></i>
+      <strong>Furnished:</strong> <i class="icon-chair"></i>
     <% end %>
     <% if @item.wheelchair %>
-      Wheelchair Accessible: <i class="icon-wheelchair"></i>
+      <strong>Wheelchair Accessible:</strong> <i class="icon-wheelchair"></i>
     <% end %>
   </p>
 
@@ -61,34 +96,87 @@
       </ul>
     <% end %>
   </p>
-<% else %>
+<% end %>
 
+<% if @item.subcategory.category == 'jobs' %>
+  <% if @item.recruiter? %>
+    <strong>Direct Contact by Recruiters: </strong><i class="icon-ok"></i>
+  <% end %>
+  <% if @item.internship? %>
+    <strong>Internship:</strong> <i class="icon-ok">
+  <% end %>
+  <% if @item.non_profit? %>
+    <strong>Non-profit Organisation:</strong> <i class="icon-ok"> 
+  <% end %>
+  <% if @item.telecommuting? %>
+    <strong>Telecommuting permissible:</strong> <i class="icon-ok">
+  <% end %>
+  <% if @item.disability? %>
+    <strong>Open for People with Disabilities:</strong> <i class="icon-ok">
+  <% end %>
 <% end %>
 
 
-<% if @item.subcategory.category.name == 'community' || @item.subcategory.category.name == 'personals' || @item.subcategory.category.name == 'housing' %>
-      
-<% else %>
 
-<p>
+<% if @item.price? %>
+  <p>
   <strong>Price:</strong>
   <%= number_to_currency(@item.price) %>
-</p>
+  </p>
+  <% if @item.price <= 5000 %>
+    <%= form_tag buy_path(id: @item.id) do %>
+    <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%= @item.price %>"
+        data-name="VDM"
+        data-description="<%= @item.name %>"
+        data-email="<%= @current_user.email %>">
+      </script>
+
+    <% end %>
+  <% end %>
+
+
 <% end %>
 
-
-
-
-<%= form_tag buy_path(id: @item.id) do %>
-<script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-amount="<%= @item.price %>"
-    data-name="VDM"
-    data-description="<%= @item.name %>"
-    data-email="<%= @current_user.email %>">
-  </script>
+<% if @item.subcategory.category.name == 'for sale' %>
+  <p>
+    <span id="show"><strong>Dimensions: </strong> <%= @item.dimensions %></span> <span id="show"><strong>Serial Number:</strong> <%= @item.serial_number %></span> <span id="show"><strong> VIN:</strong> <%= @item.vin %></span>
+  </p>
+  <p>
+    <span id="show"><strong>Colour:</strong> <%= @item.paint_colour %></span>
+  </p>
+  <p>
+    <span id="show"><strong>Title Status: </strong> <%= @item.title_status %></span>
+  </p>
+  <p>
+    <% if @item.garage_sale1? %>
+      <ul>
+        <li> Garage sale dates:
+          <ul>
+            <li><%= @item.garage_sale1 %></li>
+            <li><%= @item.garage_sale2 %></li>
+            <li><%= @item.garage_sale3 %></li>
+          </ul>
+        </li>
+      </ul>
+    <% end %>
+  </p>
+  <p>
+    <span id="show"><strong>Starts:</strong> <%= @item.start_time %></span>
+  </p>
+  <p>
+    <span id="show"><strong>Venue:</strong> <%= @item.venue %></span>
+  </p>
+  <p>
+    <span id="show"><strong>Number of Tickets: </strong> <%= @item.tickets %></span>
+  </p>
+  <p>
+    <span id="show"><strong>When's it on?</strong> <%= @item.event %></span>
+  </p>
 <% end %>
+
 
 
 <p>
@@ -113,12 +201,13 @@
 
 <% if (@current_user == @item.user) %>
 
-<%= link_to 'Edit', edit_item_path(@item) %>
+  <%= link_to 'Edit', edit_item_path(@item) %>
 
-<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
+  <%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
 
 <% else %>
 
 
+  <p>Contact: <%= link_to @item.user.email, new_conversation_path(:recipient_id => @item.user.id, :subject => @item.name) %></p>
 
 <% end %>

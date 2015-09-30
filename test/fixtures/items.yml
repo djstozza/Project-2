@@ -40,13 +40,13 @@
 #  disability          :boolean
 #  make                :string
 #  condition           :string
-#  model               :string
+#  make_type           :string
 #  dimensions          :string
 #  serial_number       :string
 #  engine_hours        :integer
 #  length_overall      :integer
 #  propulsion_type     :string
-#  model_year          :date
+#  make_year           :integer
 #  vin                 :string
 #  cylinders           :string
 #  drive               :string
