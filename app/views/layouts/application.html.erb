@@ -47,11 +47,7 @@
         <div>
           <%= text_field_tag :search, params[:search], class: "form-control" %>
           <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-          <%= text_field_tag :nearme, params[:] %>
         </div>
-
-        <%= hidden_tag_field :latitude , value: @current_user.latitude %>
-        <%= hidden_tag_field :longitude , value: @current_user.longitude %>
       <% end %>
 
       <ul class="nav navbar-nav navbar-right">

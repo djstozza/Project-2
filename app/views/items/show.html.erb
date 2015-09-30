@@ -117,13 +117,12 @@
 <% end %>
 
 
-
 <% if @item.price? %>
   <p>
   <strong>Price:</strong>
   <%= number_to_currency(@item.price) %>
   </p>
-  <% if @item.price <= 5000 %>
+  <% if @item.price <= 5000 && @current_user != @item.user %>
     <%= form_tag buy_path(id: @item.id) do %>
     <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
