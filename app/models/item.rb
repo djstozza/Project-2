@@ -30,6 +30,7 @@
 #  furnished           :boolean
 #  smoking             :boolean
 #  wheelchair          :boolean
+
 #  employment_type     :string
 #  salary              :string
 #  recruiter           :boolean
@@ -69,6 +70,7 @@
 #  sale_id             :integer
 #
 
+
 class Item < ActiveRecord::Base
 	searchkick text_start: [:name, :description], suggest: ["name"]
 	def search_data 
@@ -90,6 +92,11 @@ class Item < ActiveRecord::Base
 
 
 	
-	# validates_numericality_of :price,
-	# greater_than: 49, message: "must be atleast 50 cents" 
+
+	validates_numericality_of :price,
+	greater_than: 49, message: "must be atleast 50 cents" 
+
+	geocoded_by :full_street_address   # can also be an IP address
+	after_validation :geocode          # auto-fetch coordinates
+
 end
