@@ -1,0 +1,17 @@
+<%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+    <div class="form-group">
+     To: <%= User.find(params[:recipient_id]).email %>
+     <%= f.hidden_field :recipients, :value => params[:recipient_id] %>
+    </div>
+    <div class="form-group">
+      Re: <%= params[:subject] %>
+      <%= f.hidden_field :subject, :value => params[:subject] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :message %>
+      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+    </div>
+
+    <%= f.submit "Send Message", class: "btn btn-success" %>
+
+<% end %>

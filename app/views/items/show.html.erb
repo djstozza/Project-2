@@ -201,12 +201,13 @@
 
 <% if (@current_user == @item.user) %>
 
-<%= link_to 'Edit', edit_item_path(@item) %>
+  <%= link_to 'Edit', edit_item_path(@item) %>
 
-<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
+  <%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this?"} %>
 
 <% else %>
 
 
+  <p>Contact: <%= link_to @item.user.email, new_conversation_path(:recipient_id => @item.user.id, :subject => @item.name) %></p>
 
 <% end %>

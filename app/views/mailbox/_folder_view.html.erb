@@ -1,0 +1,33 @@
+
+<div class="row">
+  
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'mailbox/folders' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <!-- individual conversations will show here -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div id="conversations" class="panel-body">
+        <% if is_conversation %>
+            <%= render 'conversations/form' %>
+        <% else %>
+            <%= render partial: 'conversations/conversation', collection: messages %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
