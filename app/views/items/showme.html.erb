@@ -3,7 +3,8 @@
   <ul>
     <li>
       <ul>
-        <li><%= link_to item.name, item %></li>
+
+        <li><a href="/items/<%= item.item_id %>"><%= item.name %></a></li>
         <li><%= item.created_at.strftime "%e %B, %Y" %></li>
       </ul>
     </li>

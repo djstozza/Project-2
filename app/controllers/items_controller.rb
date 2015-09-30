@@ -1,29 +1,52 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  @@queryitems = []
+ 
 
   def search 
     query = params[:search].presence || "*" 
     @sub_categories = Subcategory.search query , suggest: true
     @items = Item.search query , suggest: true
     
+    @items.each do |model|
+      unless model.address
 
+       coordinates =  Geocoder.coordinates(model.address)
+       longi = coordinates[0]
+       lati = coordinates[1]
 
+       Intermediary.create name: model.name, latitude: lati, longitude: longi, item_id: model.id, address: model.address
+
+      else 
+      
+       Intermediary.create name: model.name, latitude: model.latitude, longitude: model.longitude, item_id: model.id, address: model.address
+
+      end
+
+    end
 
   end
 
    def nearme
 
+
         distance_from_user = params[:distance_from]
         
-        @@filterlist =   Item.near([@current_user.longitude, @current_user.latitude], distance_from_user)
+        @@filterlist =   Intermediary.near([@current_user.longitude, @current_user.latitude], distance_from_user)
         redirect_to items_showme_path
    end
 
    def showme
-      @listofitems = @@filterlist
+    # raise "hello"
+     @listofitems = @@filterlist
+     render :showme
+
+     destructor
    end
+
+  def destructor
+    Intermediary.destroy_all
+  end
 
   def autocomplete
     render json: Item.search(params[:term], fields: [{name: :text_start, description: :text_start}], limit: 20).map(&:name)
