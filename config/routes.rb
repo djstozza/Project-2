@@ -38,7 +38,7 @@ Rails.application.routes.draw do
           post :untrash
       end
   end
-
+  get '/session' => 'session#show'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

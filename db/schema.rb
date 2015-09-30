@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930022916) do
+ActiveRecord::Schema.define(version: 20150930042332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20150930022916) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -65,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150930022916) do
     t.boolean  "furnished"
     t.boolean  "smoking"
     t.boolean  "wheelchair"
-    t.integer  "sale_id"
     t.string   "employment_type"
     t.string   "salary"
     t.boolean  "recruiter"
@@ -102,9 +94,9 @@ ActiveRecord::Schema.define(version: 20150930022916) do
     t.datetime "event"
     t.integer  "tickets"
     t.string   "venue"
+    t.integer  "sale_id"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "address"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
@@ -160,17 +152,6 @@ ActiveRecord::Schema.define(version: 20150930022916) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
   create_table "sales", force: :cascade do |t|
     t.string   "buyer_email"
     t.string   "seller_email"
@@ -197,7 +178,6 @@ ActiveRecord::Schema.define(version: 20150930022916) do
     t.text     "password_digest"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "address"
   end
 
   create_table "wishes", force: :cascade do |t|
@@ -214,6 +194,4 @@ ActiveRecord::Schema.define(version: 20150930022916) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
 end
