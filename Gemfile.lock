@@ -85,10 +85,8 @@ GEM
     execjs (2.6.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-
     foreigner (1.7.4)
       activerecord (>= 3.0.0)
-
     geocoder (1.2.11)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -225,9 +223,7 @@ DEPENDENCIES
   byebug
   cloudinary
   coffee-rails (~> 4.1.0)
-
-  dotenv
-
+  dotenv-rails
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
