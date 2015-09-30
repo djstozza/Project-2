@@ -53,6 +53,8 @@ group :development do
   gem 'spring'
 
   gem 'dotenv-rails'
+
+  gem 'stripe'
 end
 
 group :production do
@@ -60,6 +62,6 @@ group :production do
 	gem 'rails_12factor'
 end
 
-
+gem 'geocoder'
 
 

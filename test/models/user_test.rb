@@ -10,6 +10,9 @@
 #  updated_at      :datetime         not null
 #  admin           :boolean          default(FALSE)
 #  password_digest :text
+#  latitude        :float
+#  longitude       :float
+#  address         :string
 #
 
 require 'test_helper'

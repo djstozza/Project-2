@@ -35,5 +35,7 @@ Rails.application.routes.draw do
 
   get '/users/edit' => 'users#edit', :as => :edit_user
   resources :users, :except => [:edit]
+
+  get '/items/findme' => 'items#findme'
   
 end

@@ -1,4 +1,7 @@
 <h2>Results</h2>
+
+
+
 <% if @items.suggestions[0] %>
 	<p>Did you mean <%=link_to @items.suggestions[0], request.original_url.gsub(params["search"], @items.suggestions[0])%> </p>
 <% end %>
@@ -22,3 +25,4 @@
   </ul>
 
  <% end %>
+
