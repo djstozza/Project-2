@@ -87,3 +87,4 @@ s3 = Subcategory.find_by(name: 'apts / housing')
 apa.each do |apa|
 	s3.items.create :name => apa
 end
+binding.pry
