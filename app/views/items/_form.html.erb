@@ -55,6 +55,15 @@
         <%= f.cl_image_upload :file %>
       </div>
     </div>
+    
+    <div class="form-group col-md-6">
+        <%= f.hidden_field :latitude, value: @current_user.latitude %>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <%= f.hidden_field :longitude, value: @current_user.longitude %>
+    </div>
+
     <div class="row">
       <div class="form-group">
         <div class="col-md-3"></div>

@@ -1,12 +1,29 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  @@queryitems = []
 
   def search 
     query = params[:search].presence || "*" 
     @sub_categories = Subcategory.search query , suggest: true
     @items = Item.search query , suggest: true
+    
+
+
+
   end
+
+   def nearme
+
+        distance_from_user = params[:distance_from]
+        
+        @@filterlist =   Item.near([@current_user.longitude, @current_user.latitude], distance_from_user)
+        redirect_to items_showme_path
+   end
+
+   def showme
+      @listofitems = @@filterlist
+   end
 
   def autocomplete
     render json: Item.search(params[:term], fields: [{name: :text_start, description: :text_start}], limit: 20).map(&:name)
@@ -134,7 +151,7 @@ class ItemsController < ApplicationController
     def item_params
 
 
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale_price, :employment_type, :salary, :recruiter, :internship, :non_profit, :telecommuting, :disability, :make, :model, :condition, :dimensions, :serial_number, :engine_hours, :length_overall, :propulsion_type, :model_year, :vin, :cylinders, :drive, :fuel, :engine_displacement, :paint_colour, :size, :title_status, :transmission, :car_type, :media_type, :mobile_os, :garage_sale1, :garage_sale2, :garage_sale3, :start_time, :odometer, :event, :tickets, :venue)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale_price, :employment_type, :salary, :recruiter, :internship, :non_profit, :telecommuting, :disability, :make, :model, :condition, :dimensions, :serial_number, :engine_hours, :length_overall, :propulsion_type, :model_year, :vin, :cylinders, :drive, :fuel, :engine_displacement, :paint_colour, :size, :title_status, :transmission, :car_type, :media_type, :mobile_os, :garage_sale1, :garage_sale2, :garage_sale3, :start_time, :odometer, :event, :tickets, :venue, :latitude, :longitude, :address)
 
     end
 end

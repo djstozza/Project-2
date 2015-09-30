@@ -1,0 +1,12 @@
+<% @listofitems.each do |item| %>
+  
+  <ul>
+    <li>
+      <ul>
+        <li><%= link_to item.name, item %></li>
+        <li><%= item.created_at.strftime "%e %B, %Y" %></li>
+      </ul>
+    </li>
+  </ul>
+
+  <% end %>
