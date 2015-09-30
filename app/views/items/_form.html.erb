@@ -42,10 +42,11 @@
     </div>
     <div class="row">
       <div class="col-md-3"></div>
+      <div id="for_sale"><%= render 'for_sale', :f => f %></div>
       <div id="housing"><%= render 'housing', :f => f %></div>
       <%# :f => f will allow other rendered forms to be associated with the main form %>
       <div id="jobs"><%= render 'jobs', :f => f %></div>
-      <div id="for_sale"><%= render 'for_sale', :f => f %></div>
+      
     </div>
     
     <div class="row">
