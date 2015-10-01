@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     
     @user = User.new(user_details)
     session[:user_id] = @user.id
-    @user.address = @user.address1 #{@user.suburb}, #{@user.city}, #{@user.country}"
+    @user.address = "#{@user.address1}, #{@user.suburb}, #{@user.city}, #{@user.country}"
     latlng = Geocoder.coordinates(@user.address)
     @user.latitude = latlng[0]
     @user.longitude = latlng[1]

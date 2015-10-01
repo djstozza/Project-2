@@ -10,10 +10,12 @@ class ItemsController < ApplicationController
     
     @items.each do |model|
 
+      if model.address.presence
        coordinates =  Geocoder.coordinates(model.address)
+
        lati = coordinates[0]
        longi = coordinates[1]
-
+      end
        Intermediary.create name: model.name, latitude: lati, longitude: longi, item_id: model.id, address: model.address
 
     end
