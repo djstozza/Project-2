@@ -30,7 +30,6 @@
 #  furnished           :boolean
 #  smoking             :boolean
 #  wheelchair          :boolean
-
 #  employment_type     :string
 #  salary              :string
 #  recruiter           :boolean
@@ -68,6 +67,9 @@
 #  tickets             :integer
 #  venue               :string
 #  sale_id             :integer
+#  latitude            :float
+#  longitude           :float
+#  address             :string
 #
 
 
@@ -96,5 +98,10 @@ class Item < ActiveRecord::Base
 	# validates_numericality_of :price,
 	# greater_than: 49, message: "must be atleast 50 cents" 
 
+	# geocoded_by :full_street_address   # can also be an IP address
+	# after_validation :geocode          # auto-fetch coordinates
+
+	reverse_geocoded_by :latitude, :longitude
+	# after_validation :reverse_geocode  
 
 end

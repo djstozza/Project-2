@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+
   root :to => 'session#new'
+
+
+  post '/items/nearme' => 'items#nearme'
+  get '/items/showme' => 'items#showme'
+
   get '/categories/api' => 'categories#api'
   get '/bookmarks/api' => 'bookmarks#api' 
   get '/items/api' => 'items#api'
@@ -46,6 +52,6 @@ Rails.application.routes.draw do
   get '/users/edit' => 'users#edit', :as => :edit_user
   resources :users, :except => [:edit]
 
-  get '/items/findme' => 'items#findme'
+
   
 end

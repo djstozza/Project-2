@@ -34,4 +34,7 @@ class User < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :surname, :presence => true
 	validates :password, :length => {:minimum => 8}
+
+	geocoded_by :address
+
 end
