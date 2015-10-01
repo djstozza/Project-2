@@ -460,6 +460,7 @@ $(document).ready(function () {
 	getForSale();
 	customiseItemShowPage();
 	loadEdits();
+
 	$("#new_bookmark").submit(function(event){ 
     	$.ajax({
 	        type: "DELETE",
@@ -473,4 +474,28 @@ $(document).ready(function () {
     	});
     });
 
+    $('#submitButton').click(function(){
+    	$.ajax({
+	        type: "DELETE",
+	        url: "/items/" $('#currentItemID').text() ,
+	        dataType: "json",
+	        data: {"_method":"delete"},
+	        complete: function() {
+            
+            	console.log("Item Deleted successfully");
+        	}
+    })
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
