@@ -8,17 +8,20 @@ $(document).ready(function(){
 	app.categories = new app.Categories()
 	app.bookmarks = new app.Bookmarks()
 	app.items = new app.Items()
-
+	app.current_user = new app.UserSession()
+	app.inboxes = new app.Inboxes();
 
 	app.categories.fetch().done(function(){
 		app.bookmarks.fetch().done(function(){
 			app.items.fetch().done(function(){
-
-							debugger;
+			app.inboxes.fetch().done(function () {
+				app.current_user.fetch().done(function() {
+			
 				app.bookmarks.each(function(bookmark){
 					bookmark.getItems();
 				})
 
+				app.inboxes.getCurrentUser();
 
 				// app.items.each(function(item){
 				// 	item.getBookmarks();
@@ -26,6 +29,11 @@ $(document).ready(function(){
 
 				app.router = new app.Router();
 				Backbone.history.start({pushState: true})
+			})
+			
+			});
+							
+				
 
 
 				
