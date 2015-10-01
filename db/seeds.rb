@@ -59,7 +59,6 @@ subcats5.each do |subcat|
     c5.subcategories.create :name => subcat
 end
 
-require 'open-uri'
 
 doc_act = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/act"))
 activities = doc_act.css(".row .txt .pl a").children	
@@ -79,7 +78,7 @@ m4m.each do |m4m|
 	s2.items.create :name => m4m.text 
 end
 
-doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
+doc_apa = Nokogiri::HTML(open("http://syndey.craigslist.com.au/search/apa"))
 apa = doc_apa.css(".row .txt .pl a").children
 
 s3 = Subcategory.find_by(name: 'apts / housing')
@@ -87,3 +86,57 @@ s3 = Subcategory.find_by(name: 'apts / housing')
 apa.each do |apa|
 	s3.items.create :name => apa
 end
+
+require 'open-uri'
+
+BASE_CRAIGS_URL = "http://sydney.craigslist.com.au" 
+CNT = "#{BASE_CRAIGS_URL}/search/cta"
+doc_cta = Nokogiri::HTML(open(CNT))
+rows = doc_cta.css('div.content .row')
+
+@hrefs = []
+h_url = []
+text = []
+docs = []
+names = []
+price = []
+
+rows.each do |row|
+  @hrefs << row.css(".txt .pl a").attr('href').value() if row.css(".txt .pl a").attr('href').value() =~ /^(\/cto\/|\/ctd\/)/
+end
+
+@hrefs.each do |h|
+  h_url << BASE_CRAIGS_URL + h
+end 
+
+h_url.each do |url|
+  docs << Nokogiri::HTML(open(url))
+end
+
+docs.each do |doc|
+  if doc.css(".postingtitletext span.price").text().empty?
+    price << 0
+  else
+    price << /(\d+)/.match(doc.css(".postingtitletext span.price").text()) 
+  end
+  names << doc.css(".postingtitletext").text()
+  text << doc.css("#pagecontainer .userbody #postingbody").text()
+end
+
+s4 = Subcategory.find_by(name: 'cars+trucks')
+
+docs.each_with_index do |el, i|
+  item = Item.new
+  item.description = text[i] if text[i]
+  item.name = names[i] if names[i]
+
+  price = price[i][0].to_i if price[i]
+  price = price || 0
+
+  item.price = price
+  item.save
+  s4.items << item
+end
+
+
+
