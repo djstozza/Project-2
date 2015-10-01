@@ -12,7 +12,6 @@
 #  password_digest :text
 #  latitude        :float
 #  longitude       :float
-#  address         :string
 #
 
 class User < ActiveRecord::Base
@@ -34,4 +33,7 @@ class User < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :surname, :presence => true
 	validates :password, :length => {:minimum => 8}
+
+	geocoded_by :address
+
 end

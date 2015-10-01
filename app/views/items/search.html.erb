@@ -25,3 +25,14 @@
 
  <% end %>
 
+<%= form_tag "/items/nearme"  do %>
+
+  <div class="field">
+    <%= label_tag :distance_from %><br>
+    <%= number_field_tag :distance_from %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "near me!" %>
+  </div>
+<% end %>
+

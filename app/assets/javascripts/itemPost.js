@@ -6,14 +6,7 @@ var getSubcategory = function () {
 
 
 
-var customiseItemShowPage = function () {
-	//goes through each span with the id of show in item/show and hides the ones that have no value i.e. end in " ". This customises the information that is shown
-	_.each($('span#show'), function(params) {
-		if($(params).text().endsWith(" ")) {
-	  		$(params).hide();
-	  	}
-	});
-};
+
 
 
 var loadEdits = function () {
@@ -442,6 +435,22 @@ var getHousing = function () {
 	});
 };
 
+
+
+
+var customiseItemShowPage = function () {
+	//goes through each span with the id of show in item/show and hides the ones that have no value i.e. end in " ". This customises the information that is shown
+	_.each($('span#show'), function(params) {
+		if($(params).text().endsWith(" ")) {
+	  		$(params).hide();
+	  	}
+	});
+};
+
+      
+   
+
+
 $(document).ready(function () {
 	subcategory = getSubcategory();
 	categoryAndSubcategorySwitch();
@@ -463,6 +472,5 @@ $(document).ready(function () {
         	}
     	});
     });
-	
 
 });

@@ -2,7 +2,7 @@ class SessionController < ApplicationController
   def new
   end
 
-  def show
+  def show 
     render json: @current_user
   end
 

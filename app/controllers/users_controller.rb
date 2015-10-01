@@ -33,17 +33,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
 
-    respond_to do |format|
+    user_details = user_params()
+    latlng = Geocoder.coordinates(user_details[:address])
+    user_details[:latitude] = latlng[0]
+    user_details[:longitude] = latlng[1]
+
+    @user = User.new(user_details)
+    session[:user_id] = @user.id
+    
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        session[:user_id] = @user.id
+        redirect_to root_path
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+        render :new
+     
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -87,7 +93,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation)
+      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation, :longitude , :latitude, :address)
     end
 
     def check_if_logged_in

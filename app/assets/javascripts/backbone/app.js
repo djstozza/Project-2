@@ -14,30 +14,23 @@ $(document).ready(function(){
 	app.categories.fetch().done(function(){
 		app.bookmarks.fetch().done(function(){
 			app.items.fetch().done(function(){
-			app.inboxes.fetch().done(function () {
-				app.current_user.fetch().done(function() {
+				app.current_user.fetch().done(function(){
+					
+					app.inboxes.getCurrentUser();
+					app.bookmarks.getCurrentUser();
+
+					// app.bookmarks.each(function(bookmark){
+					// 	bookmark.getItems();
+					// })
+
+					app.items.each(function(item){
+						item.getBookmarks();
+					})
+
+					app.router = new app.Router();
+					Backbone.history.start({pushState: true})
 			
-				app.bookmarks.each(function(bookmark){
-					bookmark.getItems();
 				})
-
-				app.inboxes.getCurrentUser();
-
-				// app.items.each(function(item){
-				// 	item.getBookmarks();
-				// })
-
-				app.router = new app.Router();
-				Backbone.history.start({pushState: true})
-			})
-			
-			});
-							
-				
-
-
-				
-		
 			})
 		})
 	})

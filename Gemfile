@@ -60,9 +60,10 @@ group :development do
 end
 
 group :production do
-	gem 'stripe'
+	# gem 'stripe'
 	gem 'rails_12factor'
 end
+
 
 
 
