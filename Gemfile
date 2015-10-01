@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'stripe'
+# gem 'stripe'
 gem 'bootstrap-sass'
 gem 'cloudinary'
 gem 'geocoder'
@@ -58,7 +58,7 @@ group :development do
 
   gem 'dotenv-rails'
 
-  
+  gem 'stripe'
 end
 
 group :production do

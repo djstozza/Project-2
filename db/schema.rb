@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 20151001071646) do
     t.string   "address1"
     t.string   "suburb"
     t.string   "city"
+    t.string   "state"
     t.string   "country"
   end
 
