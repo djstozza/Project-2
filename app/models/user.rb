@@ -13,13 +13,11 @@
 #  latitude        :float
 #  longitude       :float
 #  address         :string
-<<<<<<< HEAD
 #  address1        :string
 #  suburb          :string
 #  city            :string
 #  country         :string
-=======
->>>>>>> 4fa14c2cdb98c5768b4390ee3939ca689793fb50
+
 #
 
 class User < ActiveRecord::Base
