@@ -154,13 +154,10 @@ docs.each_with_index do |el, i|
   item.image = "http://www.fillmurray.com/200/200" 
   price = price[i][0].to_i if price[i]
   price = price || 0
-<<<<<<< HEAD
+
   item.address = location[i][1]
   item.image = img[i]
-=======
 
-
->>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
   item.price = price
   item.save
   s4.items << item
