@@ -34,15 +34,20 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
 
-    @user = User.new(user_params)
+    user_details = user_params()
+    latlng = Geocoder.coordinates(user_details[:address])
+    user_details[:latitude] = latlng[0]
+    user_details[:longitude] = latlng[1]
+
+    @user = User.new(user_details)
     session[:user_id] = @user.id
-    respond_to do |format|
+    
       if @user.save
         session[:user_id] = @user.id
         redirect_to root_path
       else
         render :new
-      end
+     
     end
 
   end

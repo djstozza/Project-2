@@ -9,19 +9,12 @@ class ItemsController < ApplicationController
     @items = Item.search query , suggest: true
     
     @items.each do |model|
-      unless model.address
 
        coordinates =  Geocoder.coordinates(model.address)
-       longi = coordinates[0]
-       lati = coordinates[1]
+       lati = coordinates[0]
+       longi = coordinates[1]
 
        Intermediary.create name: model.name, latitude: lati, longitude: longi, item_id: model.id, address: model.address
-
-      else 
-      
-       Intermediary.create name: model.name, latitude: model.latitude, longitude: model.longitude, item_id: model.id, address: model.address
-
-      end
 
     end
 
@@ -29,16 +22,15 @@ class ItemsController < ApplicationController
 
    def nearme
 
-
         distance_from_user = params[:distance_from]
         
-        @@filterlist =   Intermediary.near([@current_user.longitude, @current_user.latitude], distance_from_user)
+        flash[:filterlist] = Intermediary.near([@current_user.longitude, @current_user.latitude], distance_from_user)
         redirect_to items_showme_path
    end
 
    def showme
     # raise "hello"
-     @listofitems = @@filterlist
+     @listofitems = flash[:filterlist]
      render :showme
 
      destructor
