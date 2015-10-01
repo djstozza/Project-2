@@ -78,7 +78,7 @@ m4m.each do |m4m|
 	s2.items.create :name => m4m.text 
 end
 
-doc_apa = Nokogiri::HTML(open("http://syndey.craigslist.com.au/search/apa"))
+doc_apa = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/apa"))
 apa = doc_apa.css(".row .txt .pl a").children
 
 s3 = Subcategory.find_by(name: 'apts / housing')
@@ -100,6 +100,8 @@ text = []
 docs = []
 names = []
 price = []
+img = []
+location = []
 
 rows.each do |row|
   @hrefs << row.css(".txt .pl a").attr('href').value() if row.css(".txt .pl a").attr('href').value() =~ /^(\/cto\/|\/ctd\/)/
@@ -114,15 +116,28 @@ h_url.each do |url|
 end
 
 docs.each do |doc|
+
   if doc.css(".postingtitletext span.price").text().empty?
     price << 0
   else
     price << /(\d+)/.match(doc.css(".postingtitletext span.price").text()) 
   end
+
+  if doc.css("#pagecontainer .userbody .tray img").empty?
+    img << "http://www.fillmurray.com/200/200"
+  else 
+    img << doc.css("#pagecontainer .userbody .tray img").attr('src').value()
+  end 
+
+  if doc.css(".postingtitletext small").empty?
+    location << 'sydney'
+  else 
+    location << /\((.*)\)$/.match(doc.css(".postingtitletext small").text())
+  end 
+
   names << doc.css(".postingtitletext").text()
   text << doc.css("#pagecontainer .userbody #postingbody").text()
 end
-
 s4 = Subcategory.find_by(name: 'cars+trucks')
 
 docs.each_with_index do |el, i|
@@ -132,11 +147,11 @@ docs.each_with_index do |el, i|
 
   price = price[i][0].to_i if price[i]
   price = price || 0
-
+  item.address = location[i][1]
+  item.image = img[i]
   item.price = price
   item.save
   s4.items << item
 end
-
 
 
