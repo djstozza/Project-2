@@ -7,4 +7,5 @@ app.Bookmark = Backbone.Model.extend({
 		this.item = app.items.where('item_id', this)
 	}
 
+
 })

@@ -12,7 +12,6 @@
 #  password_digest :text
 #  latitude        :float
 #  longitude       :float
-#  address         :string
 #
 
 class User < ActiveRecord::Base
