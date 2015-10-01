@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :mailbox
 
+  
+
   private
   def fetch_current_user
   	if session[:user_id].present?
