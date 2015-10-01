@@ -17,6 +17,7 @@
 #  suburb          :string
 #  city            :string
 #  country         :string
+
 #
 
 require 'test_helper'

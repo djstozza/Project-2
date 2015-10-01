@@ -214,6 +214,14 @@
 
   <% end %>
 
+<%= form_for Bookmark.new do |f|  %>
+
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.hidden_field :user_id, value: @current_user.id %>
+
+<%= f.submit "bookmark this" %>
+<% end %>
+
 
 
       <script src="https://maps.googleapis.com/maps/api/js"></script>
