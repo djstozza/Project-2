@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150930103449) do
+ActiveRecord::Schema.define(version: 20150930142940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +30,6 @@ ActiveRecord::Schema.define(version: 20150930103449) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "intermediaries", force: :cascade do |t|
     t.string   "name"
     t.float    "longitude"
@@ -40,9 +37,9 @@ ActiveRecord::Schema.define(version: 20150930103449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "item_id"
+    t.string   "address"
   end
 
->>>>>>> 1a9c5b018a3cb2b57b13143d016e5618668978a3
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
@@ -110,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150930103449) do
     t.integer  "sale_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "address"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
@@ -191,6 +189,7 @@ ActiveRecord::Schema.define(version: 20150930103449) do
     t.text     "password_digest"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "address"
   end
 
   create_table "wishes", force: :cascade do |t|
