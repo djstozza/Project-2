@@ -1,5 +1,9 @@
 class MailboxController < ApplicationController
 	before_action :check_if_logged_in
+  def api
+    @inbox = @current_user.mailbox.inbox
+    render json: @inbox
+  end
 
 	def inbox
     	@inbox = @current_user.mailbox.inbox

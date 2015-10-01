@@ -9,19 +9,19 @@ $(document).ready(function(){
 	app.bookmarks = new app.Bookmarks()
 	app.items = new app.Items()
 	app.current_user = new app.UserSession()
+	app.inboxes = new app.Inboxes();
 
 	app.categories.fetch().done(function(){
 		app.bookmarks.fetch().done(function(){
 			app.items.fetch().done(function(){
 				app.current_user.fetch().done(function(){
-
-					app.bookmarks.getCurrentUser()
+					
+					app.inboxes.getCurrentUser();
+					app.bookmarks.getCurrentUser();
 
 					// app.bookmarks.each(function(bookmark){
 					// 	bookmark.getItems();
 					// })
-
-					
 
 					app.items.each(function(item){
 						item.getBookmarks();

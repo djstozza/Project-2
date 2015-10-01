@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :subcategories
-
+  get "mailbox/api" => "mailbox#api"
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   end
   get '/session' => 'session#show'
   get '/login' => 'session#new'
+  get '/session' => 'session#show'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 

@@ -5,6 +5,7 @@ class SessionController < ApplicationController
   def show 
     render json: @current_user
   end
+
   def create
   	user = User.find_by :email => params[:email]
   	if user.present? && user.authenticate(params[:password])
