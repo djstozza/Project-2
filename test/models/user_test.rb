@@ -12,6 +12,11 @@
 #  password_digest :text
 #  latitude        :float
 #  longitude       :float
+#  address         :string
+#  address1        :string
+#  suburb          :string
+#  city            :string
+#  country         :string
 #
 
 require 'test_helper'

@@ -76,9 +76,9 @@ s2 = Subcategory.find_by(name: 'rants and raves')
 
 m4m.each do |m4m|
 	s2.items.create :name => m4m.text 
-end
+end 
 
-doc_apa = Nokogiri::HTML(open("http://syndey.craigslist.com.au/search/apa"))
+doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
 apa = doc_apa.css(".row .txt .pl a").children
 
 s3 = Subcategory.find_by(name: 'apts / housing')
@@ -100,7 +100,7 @@ text = []
 docs = []
 names = []
 price = []
-
+img = []
 rows.each do |row|
   @hrefs << row.css(".txt .pl a").attr('href').value() if row.css(".txt .pl a").attr('href').value() =~ /^(\/cto\/|\/ctd\/)/
 end
@@ -119,8 +119,10 @@ docs.each do |doc|
   else
     price << /(\d+)/.match(doc.css(".postingtitletext span.price").text()) 
   end
+
+  # img << doc.css("#pagecontainer .userbody .tray img").attr('src').value()
   names << doc.css(".postingtitletext").text()
-  text << doc.css("#pagecontainer .userbody #postingbody").text()
+  text << doc.css("#pagecontainer .userbody #postingbody").text() 
 end
 
 s4 = Subcategory.find_by(name: 'cars+trucks')
@@ -129,13 +131,15 @@ docs.each_with_index do |el, i|
   item = Item.new
   item.description = text[i] if text[i]
   item.name = names[i] if names[i]
-
+  item.image = "http://www.fillmurray.com/200/200" 
   price = price[i][0].to_i if price[i]
   price = price || 0
+
 
   item.price = price
   item.save
   s4.items << item
+  u1.items << item
 end
 
 

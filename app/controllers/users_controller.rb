@@ -35,13 +35,14 @@ class UsersController < ApplicationController
   def create
 
     user_details = user_params()
-    latlng = Geocoder.coordinates(user_details[:address])
-    user_details[:latitude] = latlng[0]
-    user_details[:longitude] = latlng[1]
-
+    
+    
     @user = User.new(user_details)
     session[:user_id] = @user.id
-    
+    @user.address = @user.address1 #{@user.suburb}, #{@user.city}, #{@user.country}"
+    latlng = Geocoder.coordinates(@user.address)
+    @user.latitude = latlng[0]
+    @user.longitude = latlng[1]
       if @user.save
         session[:user_id] = @user.id
         redirect_to root_path
@@ -93,7 +94,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation, :longitude , :latitude, :address)
+      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation, :longitude , :latitude, :address, :address1, :suburb, :city, :country)
     end
 
     def check_if_logged_in

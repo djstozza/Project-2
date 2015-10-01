@@ -72,7 +72,6 @@
 #  address             :string
 #
 
-
 class Item < ActiveRecord::Base
 	searchkick text_start: [:name, :description], suggest: ["name"]
 	def search_data 
