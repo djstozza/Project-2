@@ -78,11 +78,8 @@ m4m.each do |m4m|
 	s2.items.create :name => m4m.text 
 end 
 
-<<<<<<< HEAD
-doc_apa = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/apa"))
-=======
+
 doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
->>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
 apa = doc_apa.css(".row .txt .pl a").children
 
 s3 = Subcategory.find_by(name: 'apts / housing')
@@ -108,8 +105,6 @@ img = []
 <<<<<<< HEAD
 location = []
 
-=======
->>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
 rows.each do |row|
   @hrefs << row.css(".txt .pl a").attr('href').value() if row.css(".txt .pl a").attr('href').value() =~ /^(\/cto\/|\/ctd\/)/
 end
