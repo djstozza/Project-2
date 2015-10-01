@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     
     @user = User.new(user_details)
     session[:user_id] = @user.id
-    @user.address = @user.address1 #{@user.suburb}, #{@user.city}, #{@user.country}"
+    @user.address = "#{@user.address1}, #{@user.suburb}, #{@user.city}, #{@user.country}"
     latlng = Geocoder.coordinates(@user.address)
     @user.latitude = latlng[0]
     @user.longitude = latlng[1]
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation, :longitude , :latitude, :address, :address1, :suburb, :city, :country)
+      params.require(:user).permit(:email, :name, :surname, :password, :password_confirmation, :longitude , :latitude, :address, :address1, :suburb, :city, :state, :country)
     end
 
     def check_if_logged_in
