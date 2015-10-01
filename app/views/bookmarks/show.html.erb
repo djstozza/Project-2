@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @bookmark.user_id %>
+	<strong>User:</strong>
+	<%= @bookmark.user.name %>
 </p>
 
 <p>
-  <strong>Item:</strong>
-  <%= @bookmark.item_id %>
+	<strong>Item:</strong>
+	<%= @bookmark.item.name %>
+</p>
+
+<p>
+	<strong>Category:</strong>
+	<%= @bookmark.item.subcategory.category.name %>
+</p>
+
+<p>
+	<strong>Subcategory:</strong>
+	<%= link_to @bookmark.item.subcategory.name, subcategory_path(@bookmark.item.subcategory) %>
 </p>
 
 <%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
