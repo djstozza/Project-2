@@ -69,6 +69,7 @@
 #  sale_id             :integer
 #  latitude            :float
 #  longitude           :float
+#  address             :string
 #
 
 #  id                  :integer          not null, primary key
