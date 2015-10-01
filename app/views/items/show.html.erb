@@ -4,7 +4,7 @@
   <p id="notice"><%= notice %></p>
 
 
-
+  <div id="currentItemID" style="display:none"><%= @item.id %></div>
   <h3>
   <strong>Name:</strong>
     <%= @item.name %>
@@ -236,20 +236,21 @@
           var locations =[]
           locations.push({name:"Home", latlng: new google.maps.LatLng( <%= @current_user.latitude %>,<%= @current_user.longitude %>)});
           locations.push({name:"<%= @item.name %>", latlng: new google.maps.LatLng(<%= @item.latitude %>, <%= @item.longitude %>)});
-
-          // var bounds = new google.maps.LatLngBounds ();
+          
+          var bounds = new google.maps.LatLngBounds ();
           for(var i = 0 ; i<locations.length ; i++){
             var marker = new google.maps.Marker({position:locations[i].latlng, map:map, title:locations[i].name})
-            // bounds.extend (locations[i].latlng)
+            bounds.extend (locations[i].latlng)
           }
-          // map.fitBounds(bounds)
+          map.fitBounds(bounds)
         }
         google.maps.event.addDomListener(window, 'load', initialize);
       </script>
 
+    <% unless @current_user.id == @item.user_id %>
+        <div id="map"></div>
+    <% end %>
     
-   <div id="map"></div>
-
 <% else %>
 
   <p>You need to have an account to view a post.</p>
