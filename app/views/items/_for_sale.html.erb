@@ -67,7 +67,7 @@
 		</div>
 		<div class="col-md-3 car">
 			<%= f.label :make_year, 'Model Year' %>
-			<%= f.select :make_year, options_for_select((Time.now.year - 100)..(Time.now.year)), :include_blank => true %>
+			<%= f.select :make_year, options_for_select((Time.now.year)..(Time.now.year - 100)), :include_blank => true %>
 		</div>
 		<div class="col-md-3 car">
 			<%= f.label :cylinders, 'Cylinders' %>

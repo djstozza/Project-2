@@ -72,7 +72,6 @@
 #  address             :string
 #
 
-
 class Item < ActiveRecord::Base
 	searchkick text_start: [:name, :description], suggest: ["name"]
 	def search_data 
@@ -87,10 +86,10 @@ class Item < ActiveRecord::Base
 	has_one :bookmark
 	belongs_to :sale
 
-	validates :name, :presence => true
-	validates :description, :presence => true
-	validates :category_id, :presence => true
-	validates :subcategory_id,  :presence => true
+	# validates :name, :presence => true
+	# validates :description, :presence => true
+	# validates :category_id, :presence => true
+	# validates :subcategory_id,  :presence => true
 
 
 	

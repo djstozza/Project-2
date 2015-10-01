@@ -30,7 +30,6 @@
 #  furnished           :boolean
 #  smoking             :boolean
 #  wheelchair          :boolean
-#  sale_id             :integer
 #  employment_type     :string
 #  salary              :string
 #  recruiter           :boolean
@@ -67,6 +66,7 @@
 #  event               :datetime
 #  tickets             :integer
 #  venue               :string
+#  sale_id             :integer
 #  latitude            :float
 #  longitude           :float
 #  address             :string

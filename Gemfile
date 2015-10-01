@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# gem 'stripe'
 gem 'bootstrap-sass'
 gem 'cloudinary'
 gem 'geocoder'
 gem 'mailboxer'
+gem 'country_select'
 gem 'webhostinghub-glyphs-rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record

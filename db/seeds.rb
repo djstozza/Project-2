@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcman", password: "12345678")
+u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcman", password: "12345678", address: "13 Beach Rd, Bondi Beach, Sydney, NSW, Australia", address1: "13 Beach Rd", suburb: "Bondi Beach", city: "Sydney", state: "NSW", country: "Australia" )
 u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "12345678")
 u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678")
 
@@ -76,9 +76,13 @@ s2 = Subcategory.find_by(name: 'rants and raves')
 
 m4m.each do |m4m|
 	s2.items.create :name => m4m.text 
-end
+end 
 
+<<<<<<< HEAD
 doc_apa = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/apa"))
+=======
+doc_apa = Nokogiri::HTML(open("http://sfbay.craigslist.com.au/search/apa"))
+>>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
 apa = doc_apa.css(".row .txt .pl a").children
 
 s3 = Subcategory.find_by(name: 'apts / housing')
@@ -101,8 +105,11 @@ docs = []
 names = []
 price = []
 img = []
+<<<<<<< HEAD
 location = []
 
+=======
+>>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
 rows.each do |row|
   @hrefs << row.css(".txt .pl a").attr('href').value() if row.css(".txt .pl a").attr('href').value() =~ /^(\/cto\/|\/ctd\/)/
 end
@@ -136,7 +143,7 @@ docs.each do |doc|
   end 
 
   names << doc.css(".postingtitletext").text()
-  text << doc.css("#pagecontainer .userbody #postingbody").text()
+  text << doc.css("#pagecontainer .userbody #postingbody").text() 
 end
 s4 = Subcategory.find_by(name: 'cars+trucks')
 
@@ -144,14 +151,20 @@ docs.each_with_index do |el, i|
   item = Item.new
   item.description = text[i] if text[i]
   item.name = names[i] if names[i]
-
+  item.image = "http://www.fillmurray.com/200/200" 
   price = price[i][0].to_i if price[i]
   price = price || 0
+<<<<<<< HEAD
   item.address = location[i][1]
   item.image = img[i]
+=======
+
+
+>>>>>>> 9e6d0e373d066d59ee25360165de2fa17be21e59
   item.price = price
   item.save
   s4.items << item
+  u1.items << item
 end
 
 

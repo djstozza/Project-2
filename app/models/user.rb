@@ -13,6 +13,11 @@
 #  latitude        :float
 #  longitude       :float
 #  address         :string
+#  address1        :string
+#  suburb          :string
+#  city            :string
+#  country         :string
+
 #
 
 class User < ActiveRecord::Base
@@ -36,5 +41,13 @@ class User < ActiveRecord::Base
 	validates :password, :length => {:minimum => 8}
 
 	geocoded_by :address
+
+	# Assuming country_select is used with User attribute `country_code`
+  	# This will attempt to translate the country name and use the default
+  	# (usually English) name if no translation is available
+	def country_name
+		country = Country[country_code]
+		country.translations[I18n.locale.to_s] || country.name
+	end
 
 end
