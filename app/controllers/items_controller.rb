@@ -1,11 +1,43 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+ 
 
   def search 
     query = params[:search].presence || "*" 
     @sub_categories = Subcategory.search query , suggest: true
     @items = Item.search query , suggest: true
+    
+    @items.each do |model|
+
+       coordinates =  Geocoder.coordinates(model.address)
+       lati = coordinates[0]
+       longi = coordinates[1]
+
+       Intermediary.create name: model.name, latitude: lati, longitude: longi, item_id: model.id, address: model.address
+
+    end
+
+  end
+
+   def nearme
+
+        distance_from_user = params[:distance_from]
+        
+        flash[:filterlist] = Intermediary.near([@current_user.longitude, @current_user.latitude], distance_from_user)
+        redirect_to items_showme_path
+   end
+
+   def showme
+    # raise "hello"
+     @listofitems = flash[:filterlist]
+     render :showme
+
+     destructor
+   end
+
+  def destructor
+    Intermediary.destroy_all
   end
 
   def autocomplete
@@ -134,7 +166,7 @@ class ItemsController < ApplicationController
     def item_params
 
 
-      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale_price, :employment_type, :salary, :recruiter, :internship, :non_profit, :telecommuting, :disability, :make, :model, :condition, :dimensions, :serial_number, :engine_hours, :length_overall, :propulsion_type, :model_year, :vin, :cylinders, :drive, :fuel, :engine_displacement, :paint_colour, :size, :title_status, :transmission, :car_type, :media_type, :mobile_os, :garage_sale1, :garage_sale2, :garage_sale3, :start_time, :odometer, :event, :tickets, :venue)
+      params.require(:item).permit(:name, :price, :subcategory_id, :user_id, :description, :category_id, :image, :rooms, :private_room, :bathrooms, :parking, :laundry, :rent, :housing_type, :area, :available, :openhouse1, :openouse2, :openhouse3, :pets, :rooms, :bathrooms, :furnished, :smoking, :wheelchair, :sale_price, :employment_type, :salary, :recruiter, :internship, :non_profit, :telecommuting, :disability, :make, :model, :condition, :dimensions, :serial_number, :engine_hours, :length_overall, :propulsion_type, :model_year, :vin, :cylinders, :drive, :fuel, :engine_displacement, :paint_colour, :size, :title_status, :transmission, :car_type, :media_type, :mobile_os, :garage_sale1, :garage_sale2, :garage_sale3, :start_time, :odometer, :event, :tickets, :venue, :latitude, :longitude, :address)
 
     end
 end

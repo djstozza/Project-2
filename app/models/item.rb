@@ -69,45 +69,7 @@
 #  sale_id             :integer
 #  latitude            :float
 #  longitude           :float
-#
-
-#  employment_type     :string
-#  salary              :string
-#  recruiter           :boolean
-#  internship          :boolean
-#  non_profit          :boolean
-#  telecommuting       :boolean
-#  disability          :boolean
-#  make                :string
-#  condition           :string
-#  make_type           :string
-#  dimensions          :string
-#  serial_number       :string
-#  engine_hours        :integer
-#  length_overall      :integer
-#  propulsion_type     :string
-#  make_year           :integer
-#  vin                 :string
-#  cylinders           :string
-#  drive               :string
-#  fuel                :string
-#  engine_displacement :string
-#  paint_colour        :string
-#  size                :string
-#  title_status        :string
-#  transmission        :string
-#  car_type            :string
-#  media_type          :string
-#  mobile_os           :string
-#  garage_sale1        :date
-#  garage_sale2        :date
-#  garage_sale3        :date
-#  start_time          :time
-#  odometer            :integer
-#  event               :datetime
-#  tickets             :integer
-#  venue               :string
-#  sale_id             :integer
+#  address             :string
 #
 
 
@@ -136,5 +98,10 @@ class Item < ActiveRecord::Base
 	# validates_numericality_of :price,
 	# greater_than: 49, message: "must be atleast 50 cents" 
 
+	# geocoded_by :full_street_address   # can also be an IP address
+	# after_validation :geocode          # auto-fetch coordinates
+
+	reverse_geocoded_by :latitude, :longitude
+	# after_validation :reverse_geocode  
 
 end

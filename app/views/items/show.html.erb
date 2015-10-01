@@ -210,3 +210,33 @@
   <p>Contact: <%= link_to @item.user.email, new_conversation_path(:recipient_id => @item.user.id, :subject => @item.name) %></p>
 
 <% end %>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(-33.7969235,150.9224326),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        var locations =[]
+        locations.push({name:"Home", latlng: new google.maps.LatLng( <%= @current_user.latitude %>,<%= @current_user.longitude %>)});
+        locations.push({name:"<%= @item.name %>", latlng: new google.maps.LatLng(<%= @item.longitude %>, <%= @item.latitude %>)});
+
+        var bounds = new google.maps.LatLngBounds ();
+        for(var i = 0 ; i<locations.length ; i++){
+          var marker = new google.maps.Marker({position:locations[i].latlng, map:map, title:locations[i].name})
+          bounds.extend (locations[i].latlng)
+        }
+        map.fitBounds(bounds)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+  
+ <div id="map"></div>

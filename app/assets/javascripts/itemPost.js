@@ -319,7 +319,8 @@ var customiseItemShowPage = function () {
 	});
 };
 
-
+      
+   
 
 $(document).ready(function () {
 	categoryAndSubcategorySwitch();
@@ -341,6 +342,5 @@ $(document).ready(function () {
         	}
     	});
     });
-	
 
 });
