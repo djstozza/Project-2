@@ -4,7 +4,11 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
+    if @current_user
+      @bookmarks = Bookmark.where user_id: @current_user.id
+    else 
+      @bookmarks = Bookmark.all
+    end
   end
 
   def api

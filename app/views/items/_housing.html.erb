@@ -59,18 +59,20 @@
 </div>
 <div id="housing_checkboxes" class="row">
 	<div class="col-md-3"></div>
-		<%= f.label :pets, 'Pets Allowed'%>
-		<%= f.check_box :pets %>
-	
-		<%= f.label :furnished, 'Furnished' %>
-		<%= f.check_box :furnished %>
-	
-		<%= f.label :smoking, 'Smoking' %>
-		<%= f.check_box :smoking %>
-	
-		<%= f.label :wheelchair, 'Wheelchair Accessible' %>
-		<%= f.check_box :wheelchair %>
-	
+	<table>
+		<tr>
+			<th><%= f.label :pets, 'Pets Allowed'%></th>
+			<th><%= f.label :furnished, 'Furnished' %></th>
+			<th><%= f.label :smoking, 'Smoking' %></th>
+			<th><%= f.label :wheelchair, 'Wheelchair Accessible' %></th>
+		</tr>
+		<tr>
+			<td><%= f.check_box :pets %></td>
+			<td><%= f.check_box :furnished %></td>
+			<td><%= f.check_box :smoking %></td>
+			<td><%= f.check_box :wheelchair %></td>
+		</tr>
+	</table>	
 </div>
 <div id="openhouse" class="row">
 	<div class="col-md-3"></div>

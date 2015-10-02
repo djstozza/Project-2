@@ -6,20 +6,45 @@
 </div>
 <div class="row">
 	<div class="col-md-3"></div>
-		<%= f.label :recruiter, 'Direct Contact by Recruiters is Okay'%>
-		<%= f.check_box :recruiter %>
-	
-		<%= f.label :internship, 'Internship' %>
-		<%= f.check_box :internship %>
-	
-		<%= f.label :non_profit, 'Non-profit Organisation' %>
-		<%= f.check_box :non_profit %>
-	
-		<%= f.label :telecommuting, 'Telecommuting Permissible' %>
-		<%= f.check_box :telecommuting %>
-
-		<%= f.label :disability, 'Open for People with Disablities' %>
-		<%= f.check_box :disability %>
+		<table>
+			<tr>
+				<th>
+					<%= f.label :recruiter, 'Direct Contact by Recruiters is Okay'%>
+				</th>
+				<th>
+					<%= f.label :internship, 'Internship' %>
+				</th>
+				<th>
+					<%= f.label :non_profit, 'Non-profit Organisation' %>
+				</th>
+				<th>
+					<%= f.label :telecommuting, 'Telecommuting Permissible' %>
+				</th>
+				<th>
+					<%= f.label :disability, 'Open for People with Disablities' %>
+				</th>
+			</tr>
+			<tr>	
+				<td>
+					<%= f.check_box :recruiter %>
+				</td>
+				<td>
+					<%= f.check_box :internship %>
+				</td>
+				<td>
+					<%= f.check_box :non_profit %>
+				</td>
+				<td>
+					<%= f.check_box :telecommuting %>
+				</td>
+				<td>
+					<%= f.check_box :disability %>
+				</td>
+			</tr>
+			
+		</table>
+		
+		
 </div>
 <div class="row">
 	<div class="col-md-3"></div>

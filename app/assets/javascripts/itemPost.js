@@ -4,11 +4,6 @@ var getSubcategory = function () {
 	return $('#item_subcategory_id').find(':selected').text();
 }
 
-
-
-
-
-
 var loadEdits = function () {
 	var category = $('#item_category_id').find(':selected').text();
 	if (category === 'for sale') {
@@ -477,20 +472,20 @@ $(document).ready(function () {
     $('#submitButton').click(function(){
     	$.ajax({
 	        type: "DELETE",
-	        url: "/items/" $('#currentItemID').text() ,
+	        url: "/items/" + $('#currentItemID').text() ,
 	        dataType: "json",
 	        data: {"_method":"delete"},
 	        complete: function() {
             
             	console.log("Item Deleted successfully");
         	}
-    })
+    	})
+ 
+
+	});
+
 
 });
-
-
-
-
 
 
 
