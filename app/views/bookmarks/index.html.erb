@@ -6,7 +6,7 @@
 <%# list of bookmarks will be shown over here %>
 
 <% @bookmarks.each do |bookmark| %>
-	<p><%= bookmark.item.name if bookmark.item %></p>
+	<p><%= link_to(bookmark.item.name, item_path(bookmark.item)) if bookmark.item %></p>
 <% end %>
 
 <table>
