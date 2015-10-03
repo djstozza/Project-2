@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  root :to => 'session#new'
+  get '/categories/home' => 'categories#home'
+  root :to => 'categories#home'
 
 
   post '/items/nearme' => 'items#nearme'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/categories/home' => 'categories#home'
+  
   resources :categories do 
     collection do
       get 'search'
