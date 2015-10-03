@@ -102,7 +102,6 @@ docs = []
 names = []
 price = []
 img = []
-<<<<<<< HEAD
 location = []
 
 rows.each do |row|
