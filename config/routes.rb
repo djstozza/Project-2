@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
   post '/items/nearme' => 'items#nearme'
-  get '/items/showme' => 'items#showme'
+  get '/items/filter' => 'items#filter'
 
   get '/categories/api' => 'categories#api'
   get '/bookmarks/api' => 'bookmarks#api' 

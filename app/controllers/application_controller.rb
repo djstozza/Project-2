@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :fetch_current_user
 
-  helper_method :mailbox
-
   
 
   private

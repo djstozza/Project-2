@@ -8,13 +8,16 @@ class ItemsController < ApplicationController
     @sub_categories = Subcategory.search query , suggest: true
     @items = Item.search query , suggest: true
     
-    @items.each do |model|
+    @items.each_with_index do |model, i|
 
-      if model.address.presence
-       coordinates =  Geocoder.coordinates(model.address)
+      unless model.address.nil? || model.address[0..5] == '1 hour'
+        if i % 10 == 0
+          sleep(0.1)
+        end
+        coordinates =  Geocoder.coordinates(model.address)
 
-       lati = coordinates[0]
-       longi = coordinates[1]
+        lati = coordinates[0]
+        longi = coordinates[1]
       end
        Intermediary.create name: model.name, latitude: lati, longitude: longi, item_id: model.id, address: model.address
 
@@ -27,13 +30,13 @@ class ItemsController < ApplicationController
         distance_from_user = params[:distance_from]
         
         flash[:filterlist] = Intermediary.near([@current_user.longitude, @current_user.latitude], distance_from_user)
-        redirect_to items_showme_path
+        redirect_to items_filter_path
    end
 
-   def showme
+   def filter
     # raise "hello"
      @listofitems = flash[:filterlist]
-     render :showme
+     render :filter
 
      destructor
    end
