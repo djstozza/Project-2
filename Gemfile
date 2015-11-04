@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'stripe'
+gem 'activerecord-session_store'
 gem 'bootstrap-sass'
 gem 'cloudinary'
 gem 'geocoder'

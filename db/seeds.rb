@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+Item.destroy_all
 User.destroy_all
 
-u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcman", password: "12345678", address: "13 Beach Rd, Bondi Beach, Sydney, NSW, Australia", address1: "13 Beach Rd", suburb: "Bondi Beach", city: "Sydney", state: "NSW", country: "Australia" )
+u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcman", password: "12345678", address: "14 Cecil Rd, Rose Bay, Sydney, AU", address1: "14 Cecil Rd", suburb: "Rose Bay", city: "Sydney", state: "NSW", country: "AU", latitude: "-33.8752", longitude: "151.2556" )
 u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "12345678")
-u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678")
+u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678", )
 
 Category.destroy_all
 c0 = Category.create :name => 'community'
