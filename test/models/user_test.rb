@@ -16,7 +16,9 @@
 #  address1        :string
 #  suburb          :string
 #  city            :string
+#  state           :string
 #  country         :string
+#
 
 #
 
