@@ -61,12 +61,12 @@ end
 
 
 doc_act = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/act"))
-activities = doc_act.css(".row .txt .pl a").children	
+activities = doc_act.css(".row .txt .pl a").children  
 
 s1 = Subcategory.find_by(name: 'activities')
 
 activities.each do |activity|
-	s1.items.create :name => activity.text, :image => 'http://www.fillmurray.com/200/200'
+  s1.items.create :name => activity.text, :image => 'http://www.fillmurray.com/200/200'
 end
 
 doc_m4m = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/m4m?"))
@@ -75,7 +75,7 @@ m4m = doc_m4m.css(".row .txt .pl a").children
 s2 = Subcategory.find_by(name: 'rants and raves')
 
 m4m.each do |m4m|
-	s2.items.create :name => m4m.text 
+  s2.items.create :name => m4m.text 
 end 
 
 
@@ -85,7 +85,7 @@ apa = doc_apa.css(".row .txt .pl a").children
 s3 = Subcategory.find_by(name: 'apts / housing')
 
 apa.each do |apa|
-	s3.items.create :name => apa
+  s3.items.create :name => apa
 end
 
 require 'open-uri'
@@ -139,19 +139,31 @@ docs.each do |doc|
   names << doc.css(".postingtitletext").text()
   text << doc.css("#pagecontainer .userbody #postingbody").text() 
 end
+
 s4 = Subcategory.find_by(name: 'cars+trucks')
 
 docs.each_with_index do |el, i|
   item = Item.new
   item.description = text[i] if text[i]
   item.name = names[i] if names[i]
-  item.image = "http://www.fillmurray.com/200/200" 
+  item.image = "http://fillmurray.com/200/200"
   price = price[i][0].to_i if price[i]
   price = price || 0
-
   item.address = location[i][1]
-  item.image = img[i]
 
+    unless item.address.nil? || item.address[0..5] == '1 hour'
+          if i % 10 == 0
+            sleep(0.5)
+          end
+        coordinates =  Geocoder.coordinates(item.address)
+        item.latitude = coordinates[0]
+        item.longitude = coordinates[1]
+    else
+      item.latitude = -33.8650
+      item.longitude = 151.2094
+    end
+       
+  item.image = img[i] 
   item.price = price
   item.save
   s4.items << item
