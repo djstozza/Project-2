@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">VDM</a>
+      <div><img id="logo" src="<%= image_path 'VDM.png' %>"></div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -82,8 +82,10 @@
 </script>
 
 
+<div class="container">
+  <%= yield %>
+</div>
 
-<%= yield %>
 
 </body>
 </html>

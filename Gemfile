@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# gem 'stripe'
+gem 'stripe'
 gem 'activerecord-session_store'
 gem 'bootstrap-sass'
 gem 'cloudinary'
@@ -63,7 +63,7 @@ group :development do
 end
 
 group :production do
-	gem 'stripe'
+	#gem 'stripe'
 	gem 'rails_12factor'
 end
 

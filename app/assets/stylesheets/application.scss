@@ -20,5 +20,13 @@
 @import 'webhostinghub-glyphs';
 @import "items.scss";
 @import "categories.scss";
+@import "subcategories.scss";
 
+div.container {
+	margin-left: 10px;
+}
 
+img#logo {
+	width: 90px;
+	height: 50px;
+}

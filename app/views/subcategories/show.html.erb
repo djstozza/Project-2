@@ -6,15 +6,24 @@
 	
 	<li>
 		<ul>
-			<% @subcategory.items.each do |item| %>
-			<div class="col-md-3">
-				<li>
-					<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
-				</li>
-				<li>
-					<%= item.name %>
-				</li>
-			</div>
+			<% count = 1 %>
+			<% until count >= @subcategory.items.count %>
+				<div class="row">
+				<% 4.times do %>
+					<div class="col-md-3">
+						<li class="image-container">
+			
+						<% @subcategory.items[count-1].image = "http://fillmurray.com/200/200" if @subcategory.items[count-1].image === nil %>
+							<%= link_to(cl_image_tag(@subcategory.items[count-1].image), @subcategory.items[count-1]) %>
+						</li>
+						<li>
+							<%= @subcategory.items[count-1].name %>
+						</li>
+					</div>
+				
+				<% count +=1 %>
+				<% end %>
+				</div>
 			<% end %>
 		</ul>	 
 	</li>
