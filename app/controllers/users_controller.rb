@@ -56,15 +56,23 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = @current_user
     respond_to do |format|
-      if @current_user.update(user_params)
-        format.html { redirect_to @current_user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @current_user }
+      if @user.update(user_params)
+        user_details = user_params()
+        @user = User.update(@current_user.id, user_details)
+        session[:user_id] = @user.id
+        @user.address = "#{@user.address1}, #{@user.suburb}, #{@user.city}, #{@user.country}"
+        latlng = Geocoder.coordinates(@user.address)
+        @user.latitude = latlng[0]
+        @user.longitude = latlng[1]
+        @user.save
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @current_user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /users/1
