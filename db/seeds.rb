@@ -66,7 +66,7 @@ activities = doc_act.css(".row .txt .pl a").children
 s1 = Subcategory.find_by(name: 'activities')
 
 activities.each do |activity|
-	s1.items.create :name => activity.text
+	s1.items.create :name => activity.text, :image => 'http://www.fillmurray.com/200/200'
 end
 
 doc_m4m = Nokogiri::HTML(open("http://sydney.craigslist.com.au/search/m4m?"))

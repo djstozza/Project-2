@@ -1,11 +1,20 @@
-li.image-container {
-	overflow: hidden;
-	padding-top: 10px;
-	width:200px;
-	height:200px;
-	margin: 0 auto;
-	vertical-align: middle;
-	img {
-		width: 100%;
+div.listing {
+	margin-left: 70px;
+	div#item-container {
+		border: 1px solid black;
+		height: 300px;
+		margin: 0 auto;
+		text-align: center;
+		li.image-container {
+			overflow: hidden;
+			padding-top: 10px;
+			width:200px;
+			height:200px;
+			margin: 0 auto;
+			img {
+				width: 100%;
+			}
+		}
 	}
 }
+

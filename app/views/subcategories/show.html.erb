@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @subcategory.name %></h2>
-
-<ul>
+<div class="listing">
+	<ul>
 	
-	<li>
-		<ul>
-			<% count = 1 %>
-			<% until count >= @subcategory.items.count %>
-				<div class="row">
-				<% 4.times do %>
-					<div class="col-md-3">
-						<li class="image-container">
-			
-						<% @subcategory.items[count-1].image = "http://fillmurray.com/200/200" if @subcategory.items[count-1].image === nil %>
-							<%= link_to(cl_image_tag(@subcategory.items[count-1].image), @subcategory.items[count-1]) %>
-						</li>
-						<li>
-							<%= @subcategory.items[count-1].name %>
-						</li>
+		<li>
+			<ul>
+				<% count = 0 %>
+				<% until count >= @subcategory.items.length %>
+					<div class="row">
+					<% 4.times do %>
+						<div id="item-container" class="col-md-3">
+							<li class="image-container">
+								<%= link_to(cl_image_tag(@subcategory.items[count -1].image), @subcategory.items[count -1 ]) %>
+							</li>
+							<li class="description-container">
+								<%= @subcategory.items[count -1].name %>
+							</li>
+						</div>
+					
+					<% count +=1 %>
+					<% end %>
 					</div>
-				
-				<% count +=1 %>
 				<% end %>
-				</div>
-			<% end %>
-		</ul>	 
-	</li>
+			</ul>	 
+		</li>
 
-</ul>
+	</ul>
+
+</div>
