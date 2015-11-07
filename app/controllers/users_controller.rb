@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :check_if_logged_in, :only => [:show, :edit, :update]
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_admin, :only => [:index]
+  # before_action :check_if_logged_in, :only => [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :check_if_admin, :only => [:index]
 
 
 
@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    unless @current_user.present? && @current_user.admin?
-      redirect_to root_path
-    end
+    # unless @current_user.present? && @current_user.admin?
+    redirect_to root_path
+    # end
   end
 
   # GET /users/1
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = @current_user
+     @user = User.find params[:id]
   end
 
   # POST /users
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
     latlng = Geocoder.coordinates(@user.address)
     @user.latitude = latlng[0]
     @user.longitude = latlng[1]
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        render :new
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      render :new
      
     end
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user = @current_user
+    @user = User.find params[:id]
     respond_to do |format|
       if @user.update(user_params)
         user_details = user_params()
@@ -73,6 +73,7 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /users/1
@@ -80,7 +81,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -96,9 +97,9 @@ class UsersController < ApplicationController
   end
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_user
-    #   @user = User.find(params[:id])
-    # end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
