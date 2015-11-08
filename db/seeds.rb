@@ -9,7 +9,7 @@ Item.destroy_all
 User.destroy_all
 
 u1 = User.create(email: "dan@dan.com", name: "dan", surname: "sztolcman", password: "12345678", address: "14 Cecil Rd, Rose Bay, Sydney, AU", address1: "14 Cecil Rd", suburb: "Rose Bay", city: "Sydney", state: "NSW", country: "AU", latitude: "-33.8752", longitude: "151.2556" )
-u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "12345678")
+u2 = User.create(email: "v@v.com", name: "v", surname: "smthing", password: "12345678", address: "20 Spit Rd, Mosman, Sydney, AU", address1: "20 Spit Rd", suburb: "Mosman", city: "Sydney", state: "NSW", country: "AU", latitude: "-33.8291", longitude: "151.2441")
 u3 = User.create(email: "miles@miles.com", name: "miles", surname: "disch", password: "12345678", )
 
 Category.destroy_all
@@ -151,17 +151,17 @@ docs.each_with_index do |el, i|
   price = price || 0
   item.address = location[i][1]
 
-    unless item.address.nil? || item.address[0..5] == '1 hour'
-          if i % 10 == 0
-            sleep(0.5)
-          end
-        coordinates =  Geocoder.coordinates(item.address)
-        item.latitude = coordinates[0]
-        item.longitude = coordinates[1]
-    else
-      item.latitude = -33.8650
-      item.longitude = 151.2094
-    end
+  unless item.address.nil? || item.address[0..5] == '1 hour'
+        if i % 10 == 0
+          sleep(0.5)
+        end
+      coordinates =  Geocoder.coordinates(item.address)
+      item.latitude = coordinates[0]
+      item.longitude = coordinates[1]
+  else
+    item.latitude = -33.8650
+    item.longitude = 151.2094
+  end
        
   item.image = img[i] 
   item.price = price

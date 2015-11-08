@@ -17,7 +17,7 @@
 
 <p>
 	<strong>Address:</strong>
-	<%= @user.address1 %><%= @user.suburb %>, <%= @user.city %>, <%= @user.state %>, <%= @user.country %>
+	<%= @user.address1 %>, <%= @user.suburb %>, <%= @user.city %>, <%= @user.state %>, <%= @user.country %>
 </p>
 
 <form action="">
@@ -25,4 +25,4 @@
 </form>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

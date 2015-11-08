@@ -22,11 +22,25 @@
 @import "categories.scss";
 @import "subcategories.scss";
 
+nav.navbar {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	top: 0px;
+}
+
 div.container {
 	margin-left: 10px;
+
 }
 
 img#logo {
 	width: 90px;
 	height: 50px;
+}
+
+body {
+	background-image: image-url('bg.png');
+	background-size: 100vw 101vh;
+
 }

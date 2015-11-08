@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :check_if_logged_in, :only => [:show, :edit, :update]
+  before_action :check_if_logged_in, :only => [:show, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # before_action :check_if_admin, :only => [:index]
 
@@ -9,15 +9,16 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    # unless @current_user.present? && @current_user.admin?
-    redirect_to root_path
-    # end
+    unless @current_user.present? && @current_user.admin?
+      redirect_to root_path
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find params[:id]
+    redirect_to root_path unless @current_user.id === @user.id
   end
 
   # GET /users/new
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
      @user = User.find params[:id]
+     redirect_to root_path unless @current_user.id === @user.id
   end
 
   # POST /users
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       render :new
-     
+   
     end
 
   end
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user = User.find params[:id]
+     @user = @current_user
     respond_to do |format|
       if @user.update(user_params)
         user_details = user_params()
@@ -97,9 +99,9 @@ class UsersController < ApplicationController
   end
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

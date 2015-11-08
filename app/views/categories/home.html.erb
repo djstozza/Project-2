@@ -1,24 +1,35 @@
 <div class="left">
 	<ul>
-	<% @categories.each do |category| %>
-		<div class="col-md-4 <%= 'sale' if category.name == 'for sale' %> ">
-			<li><h3><%= link_to category.name, category, :class => "col-md-12 centre " %></h3> 
+	<% @categories.each_with_index do |category, i| %>
+		<% alphabet = ("a".."z").to_a %>
+		<div id="<%= alphabet[i]%>"class="col-md-4">
+			<li id="category-container"><h3><%= link_to category.name, category, :class => "col-md-12 centre " %></h3> 
 				<ul>
-					<%  category.subcategories.each do |subcategory| %>
+					<div id="listing">
+					<%  category.subcategories.each_with_index do |subcategory, j| %>
 						<% if category.subcategories.count > 15 %>
-							<div class='col-md-6'
-								<li>
+							<% if j % 2 === 0 %>
+							<div id="left" class='col-md-6'>
+								<li id="subcategory-container1">
 									<%= link_to subcategory.name, subcategory, :class => "centre" %>
 								</li>
 							</div>
+							<% else %>
+							<div id="right" class="col-md-6">		
+								<li id="subcategory-container1">
+									<%= link_to subcategory.name, subcategory, :id => "right", :class => "centre" %>		
+								</li>
+							</div>
+							<% end %>
 						<% else %>
 							<div class="col-md-12">
-								<li>
+								<li id="subcategory-container2">
 									<%= link_to subcategory.name, subcategory, :class => "centre" %>
 								</li>
 							</div>
 						<% end %>
 					<% end %>
+					</div>
 				</ul>
 			</li>
 		</div>
