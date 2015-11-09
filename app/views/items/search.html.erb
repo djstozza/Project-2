@@ -4,13 +4,13 @@
 
 	<p>Did you mean <%=link_to @items.suggestions[0], request.original_url.gsub(params["search"], @items.suggestions[0])%> </p>
 <% end %>
-<% @sub_categories.each do |sub| %>
+<%# @sub_categories.each do |sub| %>
 	<ul>
 	    <li>
-	        <li><%= link_to sub.name, sub %></li>
+	        <li><%# link_to sub.name, sub %></li>
 	    </li>
  	</ul>
-<% end %>
+<%# end %>
 
 <% @items.each do |item| %>
   

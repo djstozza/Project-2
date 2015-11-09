@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def search 
     query = params[:search].presence || "*" 
-    @sub_categories = Subcategory.search query , suggest: true
+    # @sub_categories = Subcategory.search query , suggest: true
     @items = Item.search query , suggest: true
     
     @items.each_with_index do |model, i|
