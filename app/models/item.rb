@@ -71,8 +71,11 @@
 #  longitude           :float
 #  address             :string
 #
+require 'elasticsearch/model'
 
 class Item < ActiveRecord::Base
+	include Elasticsearch::Model
+	include Elasticsearch::Model::Callbacks
 	searchkick text_start: [:name, :description], suggest: ["name"]
 	def search_data 
 		{
