@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
       unless model.address.nil? || model.address[0..5] == '1 hour'
         if i % 10 == 0
-          sleep(0.5)
+          sleep(1)
         end
         coordinates =  Geocoder.coordinates(model.address)
 
