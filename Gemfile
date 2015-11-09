@@ -62,7 +62,7 @@ group :development do
 
   gem 'dotenv-rails'
 
-  gem 'stripe'
+  # gem 'stripe'
 end
 
 group :production do
