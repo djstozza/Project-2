@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :only => [:show, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :check_if_admin, :only => [:index]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_admin, :only => [:index]
 
 
 
@@ -45,12 +45,12 @@ class UsersController < ApplicationController
     latlng = Geocoder.coordinates(@user.address)
     @user.latitude = latlng[0]
     @user.longitude = latlng[1]
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
-    else
-      render :new
-   
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        render :new
+     
     end
 
   end

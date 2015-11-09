@@ -1,148 +1,151 @@
-<div class="row">
-  <div class="form-group col-md-6">
-    <%= f.label :price, :class => 'sr-only', :for => 'exampleInputPrice3' %>
-    <%= f.number_field :price, :class => 'form-control', :id => 'exampleInputPrice3', :placeholder => 'Price ($)', :min => 5 %>
+<div class="further-info">
+	<div class="row">
+	  <div class="form-group col-md-6">
+	    <%= f.label :price, :class => 'sr-only', :for => 'exampleInputPrice3' %>
+	    <%= f.number_field :price, :class => 'form-control', :id => 'exampleInputPrice3', :placeholder => 'Price ($)', :min => 5 %>
+		</div>
 	</div>
-</div>
-<div id="general" class="row">
-	<div class="col-md-3"></div>
-	<div class="form-group col-md-2 normal">
-        <%= f.label :make, :class => 'sr-only', :for => 'exampleInputMake3' %>
-        <%= f.text_field :make, :class => 'form-control', :id => 'exampleInputMake3', :placeholder => 'Make/Manufacturer' %>
-     </div>
-     <div class="form-group col-md-2 normal">
-        <%= f.label :make_type, :class => 'sr-only', :for => 'exampleInputModel3' %>
-        <%= f.text_field :make_type, :class => 'form-control', :id => 'exampleInputModel3', :placeholder => 'Model Name/Number' %>
-      </div>
-      <div class="form-group col-md-2 dimensions">
-        <%= f.label :dimensions, :class => 'sr-only', :for => 'exampleInputDimensions3' %>
-        <%= f.text_field :dimensions, :class => 'form-control', :id => 'exampleInputDimensions3', :placeholder => 'Dimensions (LxWxH)' %>
-      </div>
-</div>
-<div id="bike" class="row">
-	<div class="form-group col-md-3">
+	<div id="general" class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-2 normal">
+	        <%= f.label :make, :class => 'sr-only', :for => 'exampleInputMake3' %>
+	        <%= f.text_field :make, :class => 'form-control', :id => 'exampleInputMake3', :placeholder => 'Make/Manufacturer' %>
+	     </div>
+	     <div class="form-group col-md-2 normal">
+	        <%= f.label :make_type, :class => 'sr-only', :for => 'exampleInputModel3' %>
+	        <%= f.text_field :make_type, :class => 'form-control', :id => 'exampleInputModel3', :placeholder => 'Model Name/Number' %>
+	      </div>
+	      <div class="form-group col-md-2 dimensions">
+	        <%= f.label :dimensions, :class => 'sr-only', :for => 'exampleInputDimensions3' %>
+	        <%= f.text_field :dimensions, :class => 'form-control', :id => 'exampleInputDimensions3', :placeholder => 'Dimensions (LxWxH)' %>
+	      </div>
+	</div>
+	<div id="bike" class="row">
 		<div class="form-group col-md-3">
-        <%= f.label :serial_number, :class => 'sr-only', :for => 'exampleInputSerialNumber3' %>
-        <%= f.text_field :serial_number, :class => 'form-control', :id => 'exampleInputSerialNumber3', :placeholder => 'Serial Number' %>
-      </div>
+			<div class="form-group col-md-3">
+	        <%= f.label :serial_number, :class => 'sr-only', :for => 'exampleInputSerialNumber3' %>
+	        <%= f.text_field :serial_number, :class => 'form-control', :id => 'exampleInputSerialNumber3', :placeholder => 'Serial Number' %>
+	      </div>
+		</div>
 	</div>
-</div>
-<div id="boat" class="row">
-	<div class="col-md-3"></div>
-	<div class="form-group col-md-3">
-	    <%= f.label :engine_hours, :class => 'sr-only', :for => 'exampleInputEngineHours3' %>
-	    <%= f.number_field :engine_hours, :class => 'form-control', :id => 'exampleInputEngineHours3', :placeholder => 'Total Engine Hours', :min => 0 %>
-    </div>
-	<div class="form-group col-md-3">
-	    <%= f.label :length_overall, :class => 'sr-only', :for => 'exampleInputLOA3' %>
-	    <%= f.number_field :length_overall, :class => 'form-control', :id => 'exampleInputLOA3', :placeholder => 'Length Overall' %>
-    </div>
-</div>
-<div id="car" class="row">
-	<div class="col-md-3"></div>
-	<div class="form-group col-md-3">
-        <%= f.label :vin, :class => 'sr-only', :for => 'exampleInputVIN3' %>
-        <%= f.text_field :vin, :class => 'form-control', :id => 'exampleInputVIN3', :placeholder => 'VIN' %>
-      </div>
-      <div id="motorbike" class="form-group col-md-3">
-        <%= f.label :engine_displacement, :class => 'sr-only', :for => 'exampleInputEngineDisplacement3' %>
-        <%= f.number_field :engine_displacement, :class => 'form-control', :id => 'exampleInputEngineDisplacement3', :placeholder => 'Engine Displacement CC' %>
-      </div>
-      <div class="form-group col-md-3">
-        <%= f.label :odometer, :class => 'sr-only', :for => 'exampleInputOdometer3' %>
-        <%= f.number_field :odometer, :class => 'form-control', :id => 'exampleInputOdometer3', :placeholder => 'Odometer (km)' %>
-      </div>
-</div>
+	<div id="boat" class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-3">
+		    <%= f.label :engine_hours, :class => 'sr-only', :for => 'exampleInputEngineHours3' %>
+		    <%= f.number_field :engine_hours, :class => 'form-control', :id => 'exampleInputEngineHours3', :placeholder => 'Total Engine Hours', :min => 0 %>
+	    </div>
+		<div class="form-group col-md-3">
+		    <%= f.label :length_overall, :class => 'sr-only', :for => 'exampleInputLOA3' %>
+		    <%= f.number_field :length_overall, :class => 'form-control', :id => 'exampleInputLOA3', :placeholder => 'Length Overall' %>
+	    </div>
+	</div>
+	<div id="car" class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-3">
+	        <%= f.label :vin, :class => 'sr-only', :for => 'exampleInputVIN3' %>
+	        <%= f.text_field :vin, :class => 'form-control', :id => 'exampleInputVIN3', :placeholder => 'VIN' %>
+	      </div>
+	      <div id="motorbike" class="form-group col-md-3">
+	        <%= f.label :engine_displacement, :class => 'sr-only', :for => 'exampleInputEngineDisplacement3' %>
+	        <%= f.number_field :engine_displacement, :class => 'form-control', :id => 'exampleInputEngineDisplacement3', :placeholder => 'Engine Displacement CC' %>
+	      </div>
+	      <div class="form-group col-md-3">
+	        <%= f.label :odometer, :class => 'sr-only', :for => 'exampleInputOdometer3' %>
+	        <%= f.number_field :odometer, :class => 'form-control', :id => 'exampleInputOdometer3', :placeholder => 'Odometer (km)' %>
+	      </div>
+	</div>
 
-<div class="general" class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
-		<div id="condition" class="col-md-3">
-			<%= f.label :condition, 'Condition' %>
-			<%= f.select :condition, options_for_select(["new", "like new", "excellent", "good", "fair", "salvage", "other..."]), :include_blank => true %>
-		</div>
-		<div id="boat" class="col-md-3">
-			<%= f.label :propulsion_type, 'Propulsion Type' %>
-			<%= f.select :propulsion_type, options_for_select(["sail", "power", "human"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 car">
-			<%= f.label :make_year, 'Model Year' %>
-			<%= f.select :make_year, options_for_select((Time.now.year)..(Time.now.year - 100)), :include_blank => true %>
-		</div>
-		<div class="col-md-3 car">
-			<%= f.label :cylinders, 'Cylinders' %>
-			<%= f.select :cylinders, options_for_select(["3 cylinders", "4 cylinders", "5 cylinders", "6 cylinders", "8 cylinders", "10 cylinders", "12 cylinders", "other"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 car">
-			<%= f.label :drive, 'Drive' %>
-			<%= f.select :drive, options_for_select(["front wheel drive", "rear wheel drive", "4wd"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 carbike">
-			<%= f.label :fuel, 'Fuel' %>
-			<%= f.select :fuel, options_for_select(["petrol", "diesel", "hybrid", "electric", "other"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 carbike">
-			<%= f.label :paint_colour, 'Paint Colour' %>
-			<%= f.select :paint_colour, options_for_select(["black", "blue", "green", "grey", "orange",  "pink", "silver", "white", "yellow", "custom"]), :include_blank => true %>
-		</div>
+	<div class="general" class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div id="condition" class="col-md-3">
+				<%= f.label :condition, 'Condition' %>
+				<%= f.select :condition, options_for_select(["new", "like new", "excellent", "good", "fair", "salvage", "other..."]), :include_blank => true %>
+			</div>
+			<div id="boat" class="col-md-3">
+				<%= f.label :propulsion_type, 'Propulsion Type' %>
+				<%= f.select :propulsion_type, options_for_select(["sail", "power", "human"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 car">
+				<%= f.label :make_year, 'Model Year' %>
+				<%= f.select :make_year, options_for_select((Time.now.year)..(Time.now.year - 100)), :include_blank => true %>
+			</div>
+			<div class="col-md-3 car">
+				<%= f.label :cylinders, 'Cylinders' %>
+				<%= f.select :cylinders, options_for_select(["3 cylinders", "4 cylinders", "5 cylinders", "6 cylinders", "8 cylinders", "10 cylinders", "12 cylinders", "other"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 car">
+				<%= f.label :drive, 'Drive' %>
+				<%= f.select :drive, options_for_select(["front wheel drive", "rear wheel drive", "4wd"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 carbike">
+				<%= f.label :fuel, 'Fuel' %>
+				<%= f.select :fuel, options_for_select(["petrol", "diesel", "hybrid", "electric", "other"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 carbike">
+				<%= f.label :paint_colour, 'Paint Colour' %>
+				<%= f.select :paint_colour, options_for_select(["black", "blue", "green", "grey", "orange",  "pink", "silver", "white", "yellow", "custom"]), :include_blank => true %>
+			</div>
 
-		<div class="col-md-3 carbike">
-			<%= f.label :title_status, 'Title Status' %>
-			<%= f.select :title_status, options_for_select(["clean", "salvage", "rebuilt", "parts only", "lien",  "missing"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 carbike">
-			<%= f.label :transmission, 'Transmission' %>
-			<%= f.select :transmission, options_for_select(["manual", "automatic", "other"]), :include_blank => true %>
-		</div>
-		<div class="col-md-3 car">
-			<%= f.label :car_type, 'Type' %>
-			<%= f.select :car_type, options_for_select(["bus", "convertible", "coupe", "hatchback", "mini-van",  "off-road", "pick-up", "sedan", "truck", "SUV", "van"]), :include_blank => true %>
-		</div>
-		<div id="media" class="col-md-3">
-			<%= f.label :media_type, 'Media Type' %>
-			<%= f.select :media_type, options_for_select(["casette", "cd", "vinyl", "other audio", "blu-ray",  "dvd", "vhs", "other video"]), :include_blank => true %>
-		</div>
-		<div id="mobile" class="col-md-3">
-			<%= f.label :mobile_os, 'Mobile OS' %>
-			<%= f.select :mobile_os, options_for_select(["android", "apple IOS", "blackberry", "windows mobile", "other"]), :include_blank => true %>
+			<div class="col-md-3 carbike">
+				<%= f.label :title_status, 'Title Status' %>
+				<%= f.select :title_status, options_for_select(["clean", "salvage", "rebuilt", "parts only", "lien",  "missing"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 carbike">
+				<%= f.label :transmission, 'Transmission' %>
+				<%= f.select :transmission, options_for_select(["manual", "automatic", "other"]), :include_blank => true %>
+			</div>
+			<div class="col-md-3 car">
+				<%= f.label :car_type, 'Type' %>
+				<%= f.select :car_type, options_for_select(["bus", "convertible", "coupe", "hatchback", "mini-van",  "off-road", "pick-up", "sedan", "truck", "SUV", "van"]), :include_blank => true %>
+			</div>
+			<div id="media" class="col-md-3">
+				<%= f.label :media_type, 'Media Type' %>
+				<%= f.select :media_type, options_for_select(["casette", "cd", "vinyl", "other audio", "blu-ray",  "dvd", "vhs", "other video"]), :include_blank => true %>
+			</div>
+			<div id="mobile" class="col-md-3">
+				<%= f.label :mobile_os, 'Mobile OS' %>
+				<%= f.select :mobile_os, options_for_select(["android", "apple IOS", "blackberry", "windows mobile", "other"]), :include_blank => true %>
+			</div>
 		</div>
 	</div>
+	<div class="garage" class="row">
+		<div class="form-group col-md-2">
+			<%= f.label :garage_sale1, 'Garage Sale Dates' %>
+			<%= f.date_field :garage_sale1, :class => 'form-control', :min => Date.today %>
+		
+			<%= f.date_field :garage_sale2, :class => 'form-control', :min => (Date.today + 1) %>
+		
+			<%= f.date_field :garage_sale3, :class => 'form-control', :min => (Date.today + 2) %>
+		</div>
+	</div>
+	<div class="garage" class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-2">
+			<%= f.label :start_time %>
+			<%= f.time_select :start_time, :min => (Time.zone.now), :ignore_date => true, :include_blank => true %>
+		</div>
+	</div>
+	<div class="event" class="row">
+		<div class="form-group col-md-3">
+		    <%= f.label :tickets, :class => 'sr-only', :for => 'exampleInputTickets3' %>
+		    <%= f.number_field :tickets, :class => 'form-control', :id => 'exampleInputTickets3', :placeholder => 'Tickets', :min => 1 %>
+	    </div>
+	    <div class="form-group col-md-3">
+		    <%= f.label :venue, :class => 'sr-only', :for => 'exampleInputVenue3' %>
+		    <%= f.text_field :venue, :class => 'form-control', :id => 'exampleInputVenue3', :placeholder => 'Venue' %>
+	    </div>
+	</div>
+	<div class="event" class="row">
+		<div class="col-md-3"></div>
+		<div class="form-group col-md-5">
+			<%= f.label :start_time %>
+			<%= f.datetime_select :start_time, :min => (Time.zone.now), :include_blank => true %>
+		</div>
+		
+	</div>
 </div>
-<div class="garage" class="row">
-	<div class="form-group col-md-2">
-		<%= f.label :garage_sale1, 'Garage Sale Dates' %>
-		<%= f.date_field :garage_sale1, :class => 'form-control', :min => Date.today %>
 	
-		<%= f.date_field :garage_sale2, :class => 'form-control', :min => (Date.today + 1) %>
-	
-		<%= f.date_field :garage_sale3, :class => 'form-control', :min => (Date.today + 2) %>
-	</div>
-</div>
-<div class="garage" class="row">
-	<div class="col-md-3"></div>
-	<div class="form-group col-md-2">
-		<%= f.label :start_time %>
-		<%= f.time_select :start_time, :min => (Time.zone.now), :ignore_date => true, :include_blank => true %>
-	</div>
-</div>
-<div class="event" class="row">
-	<div class="form-group col-md-3">
-	    <%= f.label :tickets, :class => 'sr-only', :for => 'exampleInputTickets3' %>
-	    <%= f.number_field :tickets, :class => 'form-control', :id => 'exampleInputTickets3', :placeholder => 'Tickets', :min => 1 %>
-    </div>
-    <div class="form-group col-md-3">
-	    <%= f.label :venue, :class => 'sr-only', :for => 'exampleInputVenue3' %>
-	    <%= f.text_field :venue, :class => 'form-control', :id => 'exampleInputVenue3', :placeholder => 'Venue' %>
-    </div>
-</div>
-<div class="event" class="row">
-	<div class="col-md-3"></div>
-	<div class="form-group col-md-5">
-		<%= f.label :start_time %>
-		<%= f.datetime_select :start_time, :min => (Time.zone.now), :include_blank => true %>
-	</div>
-	
-</div>
 
 
 

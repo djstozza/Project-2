@@ -1,103 +1,103 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="user-form">
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :email, :class => 'sr-only', :for => 'exampleInputEmail3' %>
+        <%= f.email_field :email, :class => 'form-control', :id => 'exampleInputEmail3', :placeholder => 'Email' %>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :name, :class => 'sr-only', :for => 'exampleInputName3' %>
+        <%= f.text_field :name, :class => 'form-control', :id => 'exampleInputName3', :placeholder => 'Name' %>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :surname, :class => 'sr-only', :for => 'exampleInputSurname3' %>
+        <%= f.text_field :surname, :class => 'form-control', :id => 'exampleInputSurname3', :placeholder => 'Surname' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :password, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+        <%= f.password_field :password, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Password' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :password_confirmation, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+        <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Confrim Password' %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :address1, :class => 'sr-only' %>
+        <%= f.text_field :address1, :class => 'form-control',:placeholder => 'Address' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :suburb, :class => 'sr-only' %>
+        <%= f.text_field :suburb, :class => 'form-control',:placeholder => 'Suburb' %>
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :city, :class => 'sr-only' %>
+        <%= f.text_field :city, :class => 'form-control',:placeholder => 'City' %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :state, :class => 'sr-only' %>
+        <%= f.text_field :state, :class => 'form-control',:placeholder => 'State' %>
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <%= f.label :country %>
+        <%= country_select("user", "country", :include_blank => true ) %>
+      </div>
+    </div>
+
+    
+
+
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <%= submit_tag "Submit", :class => 'btn btn-default submit' %>
+    </div>
+    
   <% end %>
-
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :email, :class => 'sr-only', :for => 'exampleInputEmail3' %>
-      <%= f.email_field :email, :class => 'form-control', :id => 'exampleInputEmail3', :placeholder => 'Email' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :name, :class => 'sr-only', :for => 'exampleInputName3' %>
-      <%= f.text_field :name, :class => 'form-control', :id => 'exampleInputName3', :placeholder => 'Name' %>
-    </div>
-  </div>  
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :surname, :class => 'sr-only', :for => 'exampleInputSurname3' %>
-      <%= f.text_field :surname, :class => 'form-control', :id => 'exampleInputSurname3', :placeholder => 'Surname' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :password, :class => 'sr-only', :for => 'exampleInputPassword3' %>
-      <%= f.password_field :password, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Password' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :password_confirmation, :class => 'sr-only', :for => 'exampleInputPassword3' %>
-      <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Confrim Password' %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :address1, :class => 'sr-only' %>
-      <%= f.text_field :address1, :class => 'form-control',:placeholder => 'Address Line 1' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :suburb, :class => 'sr-only' %>
-      <%= f.text_field :suburb, :class => 'form-control',:placeholder => 'Suburb' %>
-    </div>
-  </div>
-  
-
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :city, :class => 'sr-only' %>
-      <%= f.text_field :city, :class => 'form-control',:placeholder => 'City' %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :state, :class => 'sr-only' %>
-      <%= f.text_field :state, :class => 'form-control',:placeholder => 'State' %>
-    </div>
-  </div>
-
-  
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="form-group col-md-4">
-      <%= f.label :country %>
-      <%= country_select("user", "country", :include_blank => true ) %>
-    </div>
-  </div>
-
-  
-
-
-
-  <div class="row">
-    <div class="col-md-4"></div>
-    <%= submit_tag "Submit", :class => 'btn btn-default submit' %>
-  </div>
-  
-<% end %>
-
-<p>Already have an account? Go back to the <%= link_to 'Login', login_path%> Page</p>
+</div>

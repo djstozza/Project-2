@@ -1,21 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="category-holder">
+	<h2>My Items</h2>
+</div>
+<div class="listing">
+	<ul>
+		<li>
+			<ul>
+				<% @items.each do |item| %>
+					
+					
+						<div id="item-container" class="col-md-3">
+							<li class="image-container">
+								<%= link_to(cl_image_tag(item.image), item) %>
+							</li>
+							<li class="description-container">
+								<%= item.name %>
+							</li>
+							<li class="description-container">
+								<%= item.created_at.strftime "%e %B, %Y" %>
+							</li>
+							
+						</div>
+					
+					
+				<% end %>
+			</ul>	 
+		</li>
 
-<h2><%= @current_user.name %>'s Items</h2>
+	</ul>
 
-<% @items.each do |item| %>
-  <ul>
-    <li>
-      <ul>
-        <li><%= link_to item.name, item %></li>
-        <li><%= item.image %></li>
-        <li><%= item.created_at.strftime "%e %B, %Y" %></li>
-      </ul>
-    </li>
-  </ul>
-<% end %>
- 
-
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+</div>

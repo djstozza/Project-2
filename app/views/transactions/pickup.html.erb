@@ -1,4 +1,8 @@
-<div class="row text-center">
-<h1>Congratulations on your order <%= @sale.guid %></h1>
-
+<div class="category-holder">
+	<h2>Success!</h2>
 </div>
+<div class="listing">
+	<p>Hi <%= @current_user.name %>!</p>
+	<p>Congratulations on your order. Your reference number is: <strong><%= @sale.guid %></strong></p>
+</div>
+

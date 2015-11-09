@@ -29,9 +29,9 @@ class TransactionsController < ApplicationController
   def pickup
 
     @sale = Sale.find_by!(guid: params[:guid])
- 	@sale.items << @@item
+ 	  @sale.items << @@item
 
- 	@@item.destroy
+ 	  @@item.destroy
   end
 
 

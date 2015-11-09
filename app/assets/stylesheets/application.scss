@@ -21,6 +21,8 @@
 @import "items.scss";
 @import "categories.scss";
 @import "subcategories.scss";
+@import "session.scss";
+@import "users.scss";
 
 nav.navbar {
 	position: fixed;
@@ -41,6 +43,6 @@ img#logo {
 
 body {
 	background-image: image-url('bg.png');
-	background-size: 100vw 101vh;
+	background-size: 100vw 100vh;
 
 }

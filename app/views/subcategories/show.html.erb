@@ -9,22 +9,23 @@
 	<ul>
 		<li>
 			<ul>
-				<% count = 0 %>
-				<% until count >= @subcategory.items.length %>
-					<div class="row">
-					<% 4.times do %>
+				<% @subcategory.items.each do |item| %>
+					
+					
 						<div id="item-container" class="col-md-3">
 							<li class="image-container">
-								<%= link_to(cl_image_tag(@subcategory.items[count -1].image), @subcategory.items[count -1 ]) %>
+								<%= link_to(cl_image_tag(item.image), item) %>
 							</li>
 							<li class="description-container">
-								<%= @subcategory.items[count -1].name %>
+								<%= item.name %>
 							</li>
+							<li class="description-container">
+								<%= item.created_at.strftime "%e %B, %Y" %>
+							</li>
+							
 						</div>
 					
-					<% count +=1 %>
-					<% end %>
-					</div>
+					
 				<% end %>
 			</ul>	 
 		</li>
