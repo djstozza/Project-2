@@ -42,3 +42,5 @@ Rails was the primary backend, but for the client side we employed JavaScript, a
 
 ##Contributors
 The project was completed by Daniel, Miles and Vaibhav.
+
+###THANK YOU!
