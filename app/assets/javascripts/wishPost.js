@@ -8,14 +8,10 @@ $(document).ready(function () {
 			var $this = $(this);
 			if ($this.text().startsWith(category + ':')) {
 				$this.show();
+				$('')
 			} else {
 				$this.hide();
 			}
 		});
-		if ( (category == 'community')|| (category == 'personals')){
-			$('#exampleInputPrice3').hide();
-		} else {
-			$('#exampleInputPrice3').show();
-		}
 	});
 });

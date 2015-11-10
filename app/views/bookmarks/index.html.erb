@@ -1,25 +1,15 @@
-
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Bookmarks</h1>
+<div class="category-holder">
+	<h2>My Bookmarks</h2>
+</div>
 
 <%# list of bookmarks will be shown over here %>
-
-<% @bookmarks.each do |bookmark| %>
-	<p><%= link_to(bookmark.item.name, item_path(bookmark.item)) if bookmark.item %></p>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Item</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-<div id="main">
+<div class="item">
+	<% @bookmarks.each do |bookmark| %>
+		<p><%= link_to(bookmark.item.name, item_path(bookmark.item)) if bookmark.item %></p>
+	<% end %>
 </div>
+
+
 
 <script id="appViewTemp" type="text/template">
   <div></div> 
@@ -31,4 +21,3 @@
 
 <br>
 
-<%= link_to 'New Bookmark', new_bookmark_path %>

@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div class="user-container">
+	<p>
 	<strong>Email:</strong>
 	<%= @user.email %>
-</p>
+	</p>
 
-<p>
-	<strong>Name:</strong>
-	<%= @user.name %>
-</p>
+	<p>
+		<strong>Name:</strong>
+		<%= @user.name %>
+	</p>
 
-<p>
-	<strong>Surname:</strong>
-	<%= @user.surname %>
-</p>
+	<p>
+		<strong>Surname:</strong>
+		<%= @user.surname %>
+	</p>
 
-<p>
-	<strong>Address:</strong>
-	<%= @user.address1 %>, <%= @user.suburb %>, <%= @user.city %>, <%= @user.state %>, <%= @user.country %>
-</p>
+	<p>
+		<strong>Address:</strong>
+		<%= @user.address1 %>, <%= @user.suburb %>, <%= @user.city %>, <%= @user.state %>, <%= @user.country %>
+	</p>
 
-<form action="">
-	
-</form>
+	<form action="">
+		
+	</form>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+	<%= link_to 'Edit', edit_user_path(@user) %>
+</div>
+
+
 

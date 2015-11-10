@@ -1,42 +1,40 @@
-<h2>Results</h2>
+<div class="category-holder">
+  <h2>Search Results</h2>
+</div>
+<div class="item">
+  <% if @items.suggestions.any? %>
 
-<% if @items.suggestions.any? %>
-
-	<p>Did you mean <%=link_to @items.suggestions[0], request.original_url.gsub(params["search"], @items.suggestions[0])%> </p>
-<% end %>
-<%# @sub_categories.each do |sub| %>
-	<ul>
-	    <li>
-	        <li><%# link_to sub.name, sub %></li>
-	    </li>
- 	</ul>
-<%# end %>
-
-<% @items.each do |item| %>
-  
-  <ul>
-    <li>
-      <ul>
-        <li><%= link_to item.name, item %></li>
-        <li><%= item.created_at.strftime "%e %B, %Y" %></li>
-      </ul>
-    </li>
-  </ul>
-
- <% end %>
-
-<br>
-
-<% if @current_user.present? %>
-  
-  <%= form_tag "/items/nearme"  do %>
-
-    <div class="field">
-      <%= label_tag :distance_from %><br>
-      <%= number_field_tag :distance_from %>
-    </div>
-    <div class="actions">
-      <%= submit_tag "near me!" %>
-    </div>
+    <p>Did you mean <%=link_to @items.suggestions[0], request.original_url.gsub(params["search"], @items.suggestions[0])%> </p>
   <% end %>
-<% end %>
+
+
+  <% @items.each do |item| %>
+    
+    <ul>
+      <li>
+        <ul>
+          <li><%= link_to item.name, item %></li>
+          <li><%= item.created_at.strftime "%e %B, %Y" %></li>
+        </ul>
+      </li>
+    </ul>
+
+   <% end %>
+
+  <br>
+
+  <% if @current_user.present? %>
+    
+    <%= form_tag "/items/nearme"  do %>
+
+      <div class="field">
+        <%= label_tag :distance_from %><br>
+        <%= number_field_tag :distance_from %>
+      </div>
+      <div class="actions">
+        <%= submit_tag "near me!" %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
